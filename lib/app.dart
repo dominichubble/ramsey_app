@@ -11,7 +11,17 @@ class MyApp extends StatelessWidget {
       title: 'Ramsey App',
       theme: ThemeData(
         primaryColor: AppColours.primary,
-        secondaryHeaderColor: AppColours.secondary,
+        textTheme: TextTheme(
+          headlineLarge: TextStyle(
+            color: AppColours.textSecondary,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+          headlineMedium: TextStyle(
+            color: AppColours.textPrimary,
+            fontSize: 20,
+          ),
+        ),
       ),
       initialRoute: '/',
       routes: AppRoutes.routes,
