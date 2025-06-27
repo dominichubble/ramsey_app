@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
           foregroundColor: Colors.white,
         ),
         textTheme: const TextTheme(
-          bodyLarge: TextStyles.bodyText,
+          titleLarge: TextStyles.appBarTitle,
           bodyMedium: TextStyles.bodyText,
           headlineLarge: TextStyles.heading1,
           headlineMedium: TextStyles.heading2,
