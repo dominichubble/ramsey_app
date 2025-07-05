@@ -21,7 +21,7 @@ class NewsCard extends StatelessWidget {
     print('NewsCard - Description: $description');
 
     return Card(
-      margin: const EdgeInsets.all(8.0),
+      margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -81,13 +81,20 @@ class NewsCard extends StatelessWidget {
                 ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(title, style: Theme.of(context).textTheme.bodyMedium),
+            child: Text(
+              title,
+              style: Theme.of(context).textTheme.bodyMedium,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
             child: Text(
               description,
-              style: Theme.of(context).textTheme.bodyMedium,
+              style: Theme.of(context).textTheme.bodySmall,
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
         ],

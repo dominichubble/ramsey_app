@@ -9,13 +9,17 @@ class NewsCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      scrollDirection: Axis.horizontal, // Make it horizontal
       itemCount: newsItems.length,
       itemBuilder: (context, index) {
         final newsItem = newsItems[index];
-        return NewsCard(
-          title: newsItem['title'] ?? '',
-          description: newsItem['description'] ?? '',
-          imageUrl: newsItem['imageUrl'] ?? '',
+        return SizedBox(
+          width: 280, // Fixed width for each card
+          child: NewsCard(
+            title: newsItem['title'] ?? '',
+            description: newsItem['description'] ?? '',
+            imageUrl: newsItem['imageUrl'] ?? '',
+          ),
         );
       },
     );
