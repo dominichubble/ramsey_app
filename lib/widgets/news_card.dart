@@ -31,10 +31,14 @@ class NewsCard extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
               color: Colors.grey[300],
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(4)),
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(4),
+              ),
             ),
             child: ClipRRect(
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(4)),
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(4),
+              ),
               child: imageUrl.isNotEmpty
                   ? Image.network(
                       imageUrl,
@@ -59,8 +63,18 @@ class NewsCard extends StatelessWidget {
                           child: const Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.broken_image, size: 50, color: Colors.red),
-                              Text('Failed to load', style: TextStyle(color: Colors.red, fontSize: 12)),
+                              Icon(
+                                Icons.broken_image,
+                                size: 50,
+                                color: Colors.red,
+                              ),
+                              Text(
+                                'Failed to load',
+                                style: TextStyle(
+                                  color: Colors.red,
+                                  fontSize: 12,
+                                ),
+                              ),
                             ],
                           ),
                         );
@@ -72,7 +86,10 @@ class NewsCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(Icons.image, size: 50, color: Colors.grey),
-                          Text('No image', style: TextStyle(color: Colors.grey, fontSize: 12)),
+                          Text(
+                            'No image',
+                            style: TextStyle(color: Colors.grey, fontSize: 12),
+                          ),
                         ],
                       ),
                     ),
