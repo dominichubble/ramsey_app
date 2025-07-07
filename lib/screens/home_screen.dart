@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/home_news.dart';
 import '../widgets/home_highlights.dart';
+import '../widgets/home_events.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -27,7 +28,7 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: const SingleChildScrollView(
-        child: Column(children: [HomeNews(), HomeHighlights()]),
+        child: Column(children: [HomeNews(), HomeHighlights(), HomeEvents()]),
       ),
     );
   }

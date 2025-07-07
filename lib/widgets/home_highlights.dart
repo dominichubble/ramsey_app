@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ramsey_app/widgets/home_highlight.dart';
+import 'custom_button.dart';
 
 class HomeHighlights extends StatelessWidget {
   const HomeHighlights({super.key});
@@ -18,15 +19,14 @@ class HomeHighlights extends StatelessWidget {
                 'Highlights',
                 style: Theme.of(context).textTheme.headlineLarge,
               ),
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  'See All',
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+              CustomButton(
+                text: 'See All',
+                onPressed: () {
+                  // Handle see all action
+                },
+                color: Theme.of(context).primaryColor,
+                textColor: Colors.white,
+                width: 100,
               ),
             ],
           ),

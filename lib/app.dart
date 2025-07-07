@@ -11,7 +11,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Ramsey App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: AppColours.primary,
+          primary: AppColours.primary,
+          background: AppColours.background,
+        ),
         scaffoldBackgroundColor: AppColours.background,
         appBarTheme: const AppBarTheme(
           backgroundColor: AppColours.primary,
