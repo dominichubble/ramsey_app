@@ -23,20 +23,17 @@ class HomeNews extends StatelessWidget {
               {
                 'title': 'Breaking News 1',
                 'description': 'Description for breaking news 1',
-                'imageUrl':
-                    'https://dn721803.ca.archive.org/0/items/placeholder-image//placeholder-image.jpg',
+                'imageUrl': 'https://picsum.photos/300/200?random=1',
               },
               {
                 'title': 'Breaking News 2',
                 'description': 'Description for breaking news 2',
-                'imageUrl':
-                    'https://dn721803.ca.archive.org/0/items/placeholder-image//placeholder-image.jpg',
+                'imageUrl': 'https://picsum.photos/300/200?random=2',
               },
               {
                 'title': 'Breaking News 3',
                 'description': 'Description for breaking news 3',
-                'imageUrl':
-                    'https://dn721803.ca.archive.org/0/items/placeholder-image//placeholder-image.jpg',
+                'imageUrl': 'https://picsum.photos/300/200?random=3',
               },
             ],
           ),

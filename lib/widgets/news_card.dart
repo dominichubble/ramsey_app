@@ -15,7 +15,7 @@ class NewsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Debug print to see what data is being passed
+    // Debug prints to see what data is being passed
     print('NewsCard - Title: $title');
     print('NewsCard - ImageURL: $imageUrl');
     print('NewsCard - Description: $description');
@@ -25,76 +25,80 @@ class NewsCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Check if imageUrl is valid before trying to load
-          imageUrl.isNotEmpty && Uri.tryParse(imageUrl) != null
-              ? Image.network(
-                  imageUrl,
-                  fit: BoxFit.cover,
-                  height: 200,
-                  width: double.infinity,
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress == null) return child;
-                    return Container(
-                      height: 200,
-                      color: Colors.grey[300],
-                      child: Center(
-                        child: CircularProgressIndicator(
-                          value: loadingProgress.expectedTotalBytes != null
-                              ? loadingProgress.cumulativeBytesLoaded /
-                                    loadingProgress.expectedTotalBytes!
-                              : null,
-                        ),
-                      ),
-                    );
-                  },
-                  errorBuilder: (context, error, stackTrace) {
-                    print('Image loading error: $error');
-                    return Container(
-                      height: 200,
+          // Simplified image loading
+          Container(
+            height: 150,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: Colors.grey[300],
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(4)),
+            ),
+            child: ClipRRect(
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(4)),
+              child: imageUrl.isNotEmpty
+                  ? Image.network(
+                      imageUrl,
+                      fit: BoxFit.cover,
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) {
+                          print('Image loaded successfully: $imageUrl');
+                          return child;
+                        }
+                        print('Loading image: $imageUrl');
+                        return Container(
+                          color: Colors.grey[300],
+                          child: const Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        );
+                      },
+                      errorBuilder: (context, error, stackTrace) {
+                        print('Error loading image: $imageUrl - Error: $error');
+                        return Container(
+                          color: Colors.grey[300],
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.broken_image, size: 50, color: Colors.red),
+                              Text('Failed to load', style: TextStyle(color: Colors.red, fontSize: 12)),
+                            ],
+                          ),
+                        );
+                      },
+                    )
+                  : Container(
                       color: Colors.grey[300],
                       child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.error, size: 50, color: Colors.red),
-                          Text(
-                            'Image failed to load',
-                            style: TextStyle(color: Colors.red),
-                          ),
+                          Icon(Icons.image, size: 50, color: Colors.grey),
+                          Text('No image', style: TextStyle(color: Colors.grey, fontSize: 12)),
                         ],
                       ),
-                    );
-                  },
-                )
-              : Container(
-                  height: 200,
-                  color: Colors.grey[300],
-                  child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.image, size: 50, color: Colors.grey),
-                      Text(
-                        'No image URL provided',
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                    ],
-                  ),
-                ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              title,
-              style: Theme.of(context).textTheme.bodyMedium,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
+                    ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-            child: Text(
-              description,
-              style: Theme.of(context).textTheme.bodySmall,
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
+            padding: const EdgeInsets.all(12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  description,
+                  style: Theme.of(context).textTheme.bodySmall,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
             ),
           ),
         ],
