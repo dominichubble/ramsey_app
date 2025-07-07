@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/home_main_event.dart';
+import '../widgets/custom_button.dart';
 
 class HomeEvents extends StatelessWidget {
   const HomeEvents({super.key});
@@ -11,8 +12,28 @@ class HomeEvents extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Events', style: Theme.of(context).textTheme.headlineLarge),
-          const SizedBox(height: 8.0),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Events',
+                  style: Theme.of(context).textTheme.headlineLarge,
+                ),
+                CustomButton(
+                  text: 'See All',
+                  onPressed: () {
+                    // Handle see all action
+                  },
+                  color: Theme.of(context).primaryColor,
+                  textColor: Colors.white,
+                  width: 100,
+                ),
+              ],
+            ),
+          ),
+
           // Placeholder for event items
           MainEvent(
             title: 'Upcoming Event Title',
