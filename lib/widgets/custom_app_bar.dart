@@ -17,13 +17,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: Row(
         children: [
-          Image.asset('assets/images/logo.png', height: 40.0),
-          const SizedBox(width: 30.0),
+          Image.asset('assets/images/logo.png', height: 32.0),
+          const SizedBox(width: 16.0),
           Expanded(
             child: Text(
               title,
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.titleLarge,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                fontSize: 20.0,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
         ],
