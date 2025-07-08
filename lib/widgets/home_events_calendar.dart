@@ -218,7 +218,7 @@ class _EventsCalendarState extends State<EventsCalendar> {
                         borderRadius: BorderRadius.circular(12.0),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
+                            color: Colors.black.withValues(alpha: 0.1),
                             blurRadius: 4,
                             offset: const Offset(0, 2),
                           ),
@@ -248,13 +248,13 @@ class _EventsCalendarState extends State<EventsCalendar> {
                                       errorBuilder:
                                           (context, error, stackTrace) {
                                             return Container(
-                                              color: Colors.white.withOpacity(
-                                                0.2,
+                                              color: Colors.white.withValues(
+                                                alpha: 0.2,
                                               ),
                                               child: Icon(
                                                 Icons.image,
-                                                color: Colors.white.withOpacity(
-                                                  0.7,
+                                                color: Colors.white.withValues(
+                                                  alpha: 0.7,
                                                 ),
                                                 size:
                                                     24, // Reduced from 30 to 24
@@ -263,10 +263,14 @@ class _EventsCalendarState extends State<EventsCalendar> {
                                           },
                                     )
                                   : Container(
-                                      color: Colors.white.withOpacity(0.2),
+                                      color: Colors.white.withValues(
+                                        alpha: 0.2,
+                                      ),
                                       child: Icon(
                                         Icons.event,
-                                        color: Colors.white.withOpacity(0.7),
+                                        color: Colors.white.withValues(
+                                          alpha: 0.7,
+                                        ),
                                         size: 24, // Reduced from 30 to 24
                                       ),
                                     ),
@@ -287,7 +291,7 @@ class _EventsCalendarState extends State<EventsCalendar> {
                           Text(
                             _formatDate(event['date']),
                             style: TextStyle(
-                              color: Colors.white.withOpacity(0.9),
+                              color: Colors.white.withValues(alpha: 0.9),
                               fontSize: 11, // Reduced from 12 to 11
                               fontWeight: FontWeight.w500,
                             ),
@@ -298,7 +302,7 @@ class _EventsCalendarState extends State<EventsCalendar> {
                               child: Text(
                                 event['description'],
                                 style: TextStyle(
-                                  color: Colors.white.withOpacity(0.8),
+                                  color: Colors.white.withValues(alpha: 0.8),
                                   fontSize: 9, // Reduced from 10 to 9
                                 ),
                                 maxLines: 1,
