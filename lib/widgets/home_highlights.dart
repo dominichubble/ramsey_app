@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ramsey_app/widgets/home_highlight.dart';
+import '../services/news_service.dart';
 import 'custom_button.dart';
 
 class HomeHighlights extends StatelessWidget {
@@ -7,6 +8,9 @@ class HomeHighlights extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final newsService = NewsService();
+    final featuredNews = newsService.getFeaturedNews();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -31,24 +35,18 @@ class HomeHighlights extends StatelessWidget {
             ],
           ),
         ),
-        const HomeHighlight(
-          author: 'Dave Ramsey',
-          title: 'Building Wealth: The Key Steps to Financial Freedom',
-          timePosted: '2 hours ago',
-          imageUrl: 'https://via.placeholder.com/150x150',
-        ),
-        const HomeHighlight(
-          author: 'Jane Doe',
-          title: 'Investing 101: A Beginner\'s Guide',
-          timePosted: '5 hours ago',
-          imageUrl: 'https://via.placeholder.com/150x150',
-        ),
-        const HomeHighlight(
-          author: 'John Smith',
-          title: 'Retirement Planning: What You Need to Know',
-          timePosted: '1 day ago',
-          imageUrl: 'https://via.placeholder.com/150x150',
-        ),
+        // Generate highlights from featured news
+        ...featuredNews
+            .take(3)
+            .map(
+              (news) => HomeHighlight(
+                author: news.author,
+                title: news.title,
+                timePosted: news.formattedDate,
+                imageUrl: news.imageUrl,
+              ),
+            )
+            .toList(),
       ],
     );
   }

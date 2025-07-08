@@ -13,7 +13,7 @@ class EventService {
       description:
           'Learn essential budgeting and investment strategies for building long-term wealth.',
       date: DateTime(2025, 7, 10, 14, 0), // Jul 10, 2025 2:00 PM
-      imageUrl: 'https://picsum.photos/400/200?random=1',
+      imageUrl: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=200&fit=crop',
       location: 'Ramsey Solutions Office',
       type: EventType.workshop,
     ),
@@ -23,7 +23,7 @@ class EventService {
       description:
           'Discover how to plan for your golden years and retire with confidence.',
       date: DateTime(2025, 7, 15, 18, 30), // Jul 15, 2025 6:30 PM
-      imageUrl: 'https://picsum.photos/400/200?random=2',
+      imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop',
       location: 'Virtual Event',
       type: EventType.seminar,
     ),
@@ -33,7 +33,7 @@ class EventService {
       description:
           'Deep dive into modern investment approaches and portfolio management.',
       date: DateTime(2025, 7, 22, 10, 0), // Jul 22, 2025 10:00 AM
-      imageUrl: 'https://picsum.photos/400/200?random=3',
+      imageUrl: null, // Test without image
       location: 'Downtown Conference Center',
       type: EventType.meeting,
     ),
