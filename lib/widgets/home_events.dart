@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
 import '../widgets/home_main_event.dart';
 import '../widgets/custom_button.dart';
+import '../widgets/home_events_calendar.dart';
+import '../services/event_service.dart';
 
 class HomeEvents extends StatelessWidget {
   const HomeEvents({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final eventService = EventService();
+    final mainEvent = eventService.getMainEvent();
+    final eventsAsMap = eventService.getEventsAsMap();
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Header with title and "See All" button
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Row(
@@ -24,7 +31,8 @@ class HomeEvents extends StatelessWidget {
                 CustomButton(
                   text: 'See All',
                   onPressed: () {
-                    // Handle see all action
+                    // TODO: Navigate to events page
+                    print('Navigate to all events');
                   },
                   color: Theme.of(context).primaryColor,
                   textColor: Colors.white,
@@ -34,30 +42,31 @@ class HomeEvents extends StatelessWidget {
             ),
           ),
 
-          // Placeholder for event items
-          MainEvent(
-            title: 'Upcoming Event Title',
-            date: 'Dec 15, 2024',
-            imageUrl: 'https://picsum.photos/400/200?random=1',
-          ),
-          ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: 5, // Example count
-            itemBuilder: (context, index) {
-              return ListTile(
-                title: Text('Event ${index + 1}'),
-                subtitle: Text('Event details here'),
-              );
-            },
-          ),
+          // Main featured event
+          if (mainEvent != null)
+            MainEvent(
+              title: mainEvent.title,
+              date: mainEvent.formattedDate,
+              imageUrl:
+                  mainEvent.imageUrl ??
+                  'https://picsum.photos/400/200?random=1',
+            )
+          else
+            Container(
+              height: 120,
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: const Center(child: Text('No upcoming events')),
+            ),
+
+          const SizedBox(height: 16),
+
+          // Events calendar with filtering
+          EventsCalendar(events: eventsAsMap),
+
           const SizedBox(height: 16.0),
-          ElevatedButton(
-            onPressed: () {
-              // Handle see all action
-            },
-            child: const Text('See All'),
-          ),
         ],
       ),
     );
