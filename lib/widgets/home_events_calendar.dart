@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../services/event_service.dart';
 
 enum EventFilter { thisWeek, nextWeek, thisMonth, nextMonth }
@@ -25,9 +26,8 @@ class _EventsCalendarState extends State<EventsCalendar> {
         events.isEmpty ||
         (events.isNotEmpty && !events.first.containsKey('imageUrl'));
 
-    final eventsToFilter = useServiceEvents
-        ? _eventService.getEventsAsMap()
-        : events;
+    final eventsToFilter =
+        useServiceEvents ? _eventService.getEventsAsMap() : events;
 
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);
@@ -146,44 +146,46 @@ class _EventsCalendarState extends State<EventsCalendar> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Filter buttons
-        Container(
+        SizedBox(
           height: 50,
           child: ListView(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            children: EventFilter.values.map((filter) {
-              final isSelected = selectedFilter == filter;
-              return Container(
-                margin: const EdgeInsets.only(right: 8.0),
-                child: FilterChip(
-                  label: Text(
-                    getFilterText(filter),
-                    style: TextStyle(
-                      color: isSelected
-                          ? Colors.white
-                          : Theme.of(context).primaryColor,
-                      fontWeight: isSelected
-                          ? FontWeight.w600
-                          : FontWeight.w400,
+            children:
+                EventFilter.values.map((filter) {
+                  final isSelected = selectedFilter == filter;
+                  return Container(
+                    margin: const EdgeInsets.only(right: 8.0),
+                    child: FilterChip(
+                      label: Text(
+                        getFilterText(filter),
+                        style: TextStyle(
+                          color:
+                              isSelected
+                                  ? Colors.white
+                                  : Theme.of(context).primaryColor,
+                          fontWeight:
+                              isSelected ? FontWeight.w600 : FontWeight.w400,
+                        ),
+                      ),
+                      selected: isSelected,
+                      onSelected: (selected) {
+                        setState(() {
+                          selectedFilter = filter;
+                        });
+                      },
+                      backgroundColor: Colors.grey[200],
+                      selectedColor: Theme.of(context).primaryColor,
+                      checkmarkColor: Colors.white,
+                      side: BorderSide(
+                        color:
+                            isSelected
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey[400]!,
+                      ),
                     ),
-                  ),
-                  selected: isSelected,
-                  onSelected: (selected) {
-                    setState(() {
-                      selectedFilter = filter;
-                    });
-                  },
-                  backgroundColor: Colors.grey[200],
-                  selectedColor: Theme.of(context).primaryColor,
-                  checkmarkColor: Colors.white,
-                  side: BorderSide(
-                    color: isSelected
-                        ? Theme.of(context).primaryColor
-                        : Colors.grey[400]!,
-                  ),
-                ),
-              );
-            }).toList(),
+                  );
+                }).toList(),
           ),
         ),
 
@@ -192,61 +194,65 @@ class _EventsCalendarState extends State<EventsCalendar> {
         // Events horizontal scroll
         SizedBox(
           height: 110, // Reduced from 120 to 110
-          child: filteredEvents.isEmpty
-              ? Center(
-                  child: Text(
-                    'No events for ${getFilterText(selectedFilter).toLowerCase()}',
-                    style: Theme.of(
-                      context,
-                    ).textTheme.bodyMedium?.copyWith(color: Colors.grey[600]),
-                  ),
-                )
-              : ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  itemCount: filteredEvents.length,
-                  itemBuilder: (context, index) {
-                    final event = filteredEvents[index];
-                    return Container(
-                      width: 280,
-                      margin: const EdgeInsets.only(right: 12.0),
-                      padding: const EdgeInsets.all(
-                        12.0,
-                      ), // Reduced from 16 to 12
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor,
-                        borderRadius: BorderRadius.circular(12.0),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withValues(alpha: 0.1),
-                            blurRadius: 4,
-                            offset: const Offset(0, 2),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize:
-                            MainAxisSize.min, // Added to minimize height
-                        children: [
-                          // Event image at the top
-                          Container(
-                            height: 40, // Reduced from 45 to 40
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8.0),
-                              color: Colors.grey[300],
+          child:
+              filteredEvents.isEmpty
+                  ? Center(
+                    child: Text(
+                      'No events for ${getFilterText(selectedFilter).toLowerCase()}',
+                      style: Theme.of(
+                        context,
+                      ).textTheme.bodyMedium?.copyWith(color: Colors.grey[600]),
+                    ),
+                  )
+                  : ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    itemCount: filteredEvents.length,
+                    itemBuilder: (context, index) {
+                      final event = filteredEvents[index];
+                      return Container(
+                        width: 280,
+                        margin: const EdgeInsets.only(right: 12.0),
+                        padding: const EdgeInsets.all(
+                          12.0,
+                        ), // Reduced from 16 to 12
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                          borderRadius: BorderRadius.circular(12.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withValues(alpha: 0.1),
+                              blurRadius: 4,
+                              offset: const Offset(0, 2),
                             ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child:
-                                  event['imageUrl'] != null &&
-                                      event['imageUrl'].isNotEmpty
-                                  ? Image.network(
-                                      event['imageUrl'],
-                                      fit: BoxFit.cover,
-                                      errorBuilder:
-                                          (context, error, stackTrace) {
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize:
+                              MainAxisSize.min, // Added to minimize height
+                          children: [
+                            // Event image at the top
+                            Container(
+                              height: 40, // Reduced from 45 to 40
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8.0),
+                                color: Colors.grey[300],
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child:
+                                    event['imageUrl'] != null &&
+                                            event['imageUrl'].isNotEmpty
+                                        ? Image.network(
+                                          event['imageUrl'],
+                                          fit: BoxFit.cover,
+                                          errorBuilder: (
+                                            context,
+                                            error,
+                                            stackTrace,
+                                          ) {
                                             return Container(
                                               color: Colors.white.withValues(
                                                 alpha: 0.2,
@@ -261,60 +267,60 @@ class _EventsCalendarState extends State<EventsCalendar> {
                                               ),
                                             );
                                           },
-                                    )
-                                  : Container(
-                                      color: Colors.white.withValues(
-                                        alpha: 0.2,
-                                      ),
-                                      child: Icon(
-                                        Icons.event,
-                                        color: Colors.white.withValues(
-                                          alpha: 0.7,
+                                        )
+                                        : Container(
+                                          color: Colors.white.withValues(
+                                            alpha: 0.2,
+                                          ),
+                                          child: Icon(
+                                            Icons.event,
+                                            color: Colors.white.withValues(
+                                              alpha: 0.7,
+                                            ),
+                                            size: 24, // Reduced from 30 to 24
+                                          ),
                                         ),
-                                        size: 24, // Reduced from 30 to 24
-                                      ),
-                                    ),
-                            ),
-                          ),
-                          const SizedBox(height: 6), // Reduced from 8 to 6
-                          Text(
-                            event['title'] ?? 'Event',
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 13, // Reduced from 14 to 13
-                              fontWeight: FontWeight.bold,
-                            ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          const SizedBox(height: 2), // Reduced from 4 to 2
-                          Text(
-                            _formatDate(event['date']),
-                            style: TextStyle(
-                              color: Colors.white.withValues(alpha: 0.9),
-                              fontSize: 11, // Reduced from 12 to 11
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          if (event['description'] != null) ...[
-                            const SizedBox(height: 2), // Reduced from 4 to 2
-                            Flexible(
-                              child: Text(
-                                event['description'],
-                                style: TextStyle(
-                                  color: Colors.white.withValues(alpha: 0.8),
-                                  fontSize: 9, // Reduced from 10 to 9
-                                ),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
                               ),
                             ),
+                            const SizedBox(height: 6), // Reduced from 8 to 6
+                            Text(
+                              event['title'] ?? 'Event',
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 13, // Reduced from 14 to 13
+                                fontWeight: FontWeight.bold,
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            const SizedBox(height: 2), // Reduced from 4 to 2
+                            Text(
+                              _formatDate(event['date']),
+                              style: TextStyle(
+                                color: Colors.white.withValues(alpha: 0.9),
+                                fontSize: 11, // Reduced from 12 to 11
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            if (event['description'] != null) ...[
+                              const SizedBox(height: 2), // Reduced from 4 to 2
+                              Flexible(
+                                child: Text(
+                                  event['description'],
+                                  style: TextStyle(
+                                    color: Colors.white.withValues(alpha: 0.8),
+                                    fontSize: 9, // Reduced from 10 to 9
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ],
                           ],
-                        ],
-                      ),
-                    );
-                  },
-                ),
+                        ),
+                      );
+                    },
+                  ),
         ),
       ],
     );

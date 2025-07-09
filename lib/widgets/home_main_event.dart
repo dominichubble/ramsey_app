@@ -16,7 +16,7 @@ class MainEvent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.all(8.0),
-      child: Container(
+      child: SizedBox(
         height: 120,
         child: Row(
           children: [
@@ -56,7 +56,7 @@ class MainEvent extends StatelessWidget {
             ),
 
             // Right side - Square image
-            Container(
+            SizedBox(
               width: 120,
               height: 120,
               child: ClipRRect(

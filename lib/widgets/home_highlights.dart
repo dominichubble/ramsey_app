@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ramsey_app/widgets/home_highlight.dart';
+
 import '../services/news_service.dart';
 import 'custom_button.dart';
 
@@ -46,7 +47,7 @@ class HomeHighlights extends StatelessWidget {
                 imageUrl: news.imageUrl,
               ),
             )
-            .toList(),
+            ,
       ],
     );
   }

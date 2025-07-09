@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import '../models/news.dart';
 import '../services/news_service.dart';
-import '../widgets/news_card.dart';
 import '../widgets/custom_app_bar.dart';
+import '../widgets/news_card.dart';
 
 class NewsScreen extends StatefulWidget {
   const NewsScreen({super.key});
@@ -51,17 +52,18 @@ class _NewsScreenState extends State<NewsScreen> {
               decoration: InputDecoration(
                 hintText: 'Search news...',
                 prefixIcon: const Icon(Icons.search),
-                suffixIcon: _searchQuery.isNotEmpty
-                    ? IconButton(
-                        icon: const Icon(Icons.clear),
-                        onPressed: () {
-                          _searchController.clear();
-                          setState(() {
-                            _searchQuery = '';
-                          });
-                        },
-                      )
-                    : null,
+                suffixIcon:
+                    _searchQuery.isNotEmpty
+                        ? IconButton(
+                          icon: const Icon(Icons.clear),
+                          onPressed: () {
+                            _searchController.clear();
+                            setState(() {
+                              _searchQuery = '';
+                            });
+                          },
+                        )
+                        : null,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -97,12 +99,14 @@ class _NewsScreenState extends State<NewsScreen> {
                     backgroundColor: Colors.grey[200],
                     selectedColor: Theme.of(context).primaryColor,
                     labelStyle: TextStyle(
-                      color: _selectedCategory == null
-                          ? Colors.white
-                          : Theme.of(context).primaryColor,
-                      fontWeight: _selectedCategory == null
-                          ? FontWeight.w600
-                          : FontWeight.w400,
+                      color:
+                          _selectedCategory == null
+                              ? Colors.white
+                              : Theme.of(context).primaryColor,
+                      fontWeight:
+                          _selectedCategory == null
+                              ? FontWeight.w600
+                              : FontWeight.w400,
                     ),
                   ),
                 ),
@@ -123,13 +127,12 @@ class _NewsScreenState extends State<NewsScreen> {
                       selectedColor: category.color,
                       labelStyle: TextStyle(
                         color: isSelected ? Colors.white : category.color,
-                        fontWeight: isSelected
-                            ? FontWeight.w600
-                            : FontWeight.w400,
+                        fontWeight:
+                            isSelected ? FontWeight.w600 : FontWeight.w400,
                       ),
                     ),
                   );
-                }).toList(),
+                }),
               ],
             ),
           ),
@@ -156,42 +159,43 @@ class _NewsScreenState extends State<NewsScreen> {
 
           // News list
           Expanded(
-            child: filteredNewsList.isEmpty
-                ? Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.article_outlined,
-                          size: 80,
-                          color: Colors.grey[400],
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          'No news articles found',
-                          style: Theme.of(context).textTheme.headlineSmall
-                              ?.copyWith(color: Colors.grey[600]),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          'Try adjusting your search or filters',
-                          style: Theme.of(context).textTheme.bodyMedium
-                              ?.copyWith(color: Colors.grey[500]),
-                        ),
-                      ],
+            child:
+                filteredNewsList.isEmpty
+                    ? Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.article_outlined,
+                            size: 80,
+                            color: Colors.grey[400],
+                          ),
+                          const SizedBox(height: 16),
+                          Text(
+                            'No news articles found',
+                            style: Theme.of(context).textTheme.headlineSmall
+                                ?.copyWith(color: Colors.grey[600]),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            'Try adjusting your search or filters',
+                            style: Theme.of(context).textTheme.bodyMedium
+                                ?.copyWith(color: Colors.grey[500]),
+                          ),
+                        ],
+                      ),
+                    )
+                    : ListView.builder(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      itemCount: filteredNewsList.length,
+                      itemBuilder: (context, index) {
+                        final news = filteredNewsList[index];
+                        return SizedBox(
+                          width: double.infinity,
+                          child: NewsCard.fromNews(news),
+                        );
+                      },
                     ),
-                  )
-                : ListView.builder(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    itemCount: filteredNewsList.length,
-                    itemBuilder: (context, index) {
-                      final news = filteredNewsList[index];
-                      return SizedBox(
-                        width: double.infinity,
-                        child: NewsCard.fromNews(news),
-                      );
-                    },
-                  ),
           ),
         ],
       ),
