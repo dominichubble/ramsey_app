@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ramsey_app/widgets/news_cards.dart';
+
 import '../services/news_service.dart';
-import '../widgets/custom_button.dart';
 
 class HomeNews extends StatelessWidget {
   const HomeNews({super.key});
@@ -16,23 +16,9 @@ class HomeNews extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Latest News',
-                style: Theme.of(context).textTheme.headlineLarge,
-              ),
-              CustomButton(
-                text: 'See All',
-                onPressed: () {
-                  Navigator.pushNamed(context, '/news');
-                },
-                color: Theme.of(context).primaryColor,
-                textColor: Colors.white,
-                width: 100,
-              ),
-            ],
+          child: Text(
+            'Latest News',
+            style: Theme.of(context).textTheme.headlineLarge,
           ),
         ),
         SizedBox(
