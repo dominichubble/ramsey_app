@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import '../widgets/home_main_event.dart';
+
+import '../services/event_service.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/home_events_calendar.dart';
-import '../services/event_service.dart';
+import '../widgets/home_main_event.dart';
 
 class HomeEvents extends StatelessWidget {
   const HomeEvents({super.key});

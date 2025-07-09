@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ramsey_app/constants/colours.dart';
 
 class TextStyles {
   // Appbar title style based on your CSS
@@ -11,10 +12,10 @@ class TextStyles {
   // Heading 1 style based on your CSS
   static const TextStyle heading1 = TextStyle(
     fontFamily: 'Comfortaa',
-    fontSize: 16,
-    height: 1.625, // line-height: 26px / font-size: 16px = 1.625
+    fontSize: 24,
+    height: 1.5, // line-height: 36px / font-size: 24px = 1.5
     fontWeight: FontWeight.w700,
-    color: Colors.black, // Assuming primary color is used for headings
+    color: AppColours.heading,
   );
 
   // You can add more text styles here

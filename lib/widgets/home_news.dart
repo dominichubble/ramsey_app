@@ -16,9 +16,19 @@ class HomeNews extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Text(
-            'Latest News',
-            style: Theme.of(context).textTheme.headlineLarge,
+          child: Row(
+            children: [
+              Icon(
+                Icons.article_outlined,
+                size: 28,
+                color: Theme.of(context).primaryColor,
+              ),
+              const SizedBox(width: 8),
+              Text(
+                'Latest News',
+                style: Theme.of(context).textTheme.headlineLarge,
+              ),
+            ],
           ),
         ),
         SizedBox(

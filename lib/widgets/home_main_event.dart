@@ -34,7 +34,7 @@ class MainEvent extends StatelessWidget {
                       children: [
                         Text(
                           title,
-                          style: Theme.of(context).textTheme.headlineLarge
+                          style: Theme.of(context).textTheme.headlineMedium
                               ?.copyWith(fontWeight: FontWeight.bold),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
@@ -42,11 +42,12 @@ class MainEvent extends StatelessWidget {
                         const SizedBox(height: 4),
                         Text(
                           date,
-                          style: Theme.of(context).textTheme.headlineMedium
-                              ?.copyWith(
-                                color: Colors.grey[600],
-                                fontWeight: FontWeight.w500,
-                              ),
+                          style: Theme.of(
+                            context,
+                          ).textTheme.headlineMedium?.copyWith(
+                            color: Colors.grey[600],
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ],
                     ),
