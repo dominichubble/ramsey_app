@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 
+import '../services/restaurant_service.dart';
 import '../widgets/custom_button.dart';
+import '../widgets/restaurant_card.dart';
 
 class HomeFoodAndDrink extends StatelessWidget {
   const HomeFoodAndDrink({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final restaurantService = RestaurantService();
+    final restaurants = restaurantService.getHomePageRestaurants(limit: 6);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -15,14 +20,25 @@ class HomeFoodAndDrink extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Food & Drink',
-                style: Theme.of(context).textTheme.headlineLarge,
+              Row(
+                children: [
+                  Icon(
+                    Icons.restaurant_outlined,
+                    size: 28,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  const SizedBox(width: 8),
+                  Text(
+                    'Food & Drink',
+                    style: Theme.of(context).textTheme.headlineLarge,
+                  ),
+                ],
               ),
               CustomButton(
                 text: 'See All',
                 onPressed: () {
-                  // Handle see all action
+                  // TODO: Navigate to restaurants page
+                  print('Navigate to all restaurants');
                 },
                 color: Theme.of(context).primaryColor,
                 textColor: Colors.white,
@@ -31,6 +47,53 @@ class HomeFoodAndDrink extends StatelessWidget {
             ],
           ),
         ),
+
+        // Restaurant cards vertical scroll
+        SizedBox(
+          height: 340, // Fixed height for the ListView
+          child:
+              restaurants.isEmpty
+                  ? Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.restaurant_outlined,
+                          size: 80,
+                          color: Colors.grey[400],
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          'No restaurants available',
+                          style: Theme.of(context).textTheme.headlineSmall
+                              ?.copyWith(color: Colors.grey[600]),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Check back later for dining options',
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(color: Colors.grey[500]),
+                        ),
+                      ],
+                    ),
+                  )
+                  : ListView.builder(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    itemCount: restaurants.length,
+                    itemBuilder: (context, index) {
+                      final restaurant = restaurants[index];
+                      return RestaurantCard(
+                        restaurant: restaurant,
+                        onTap: () {
+                          // TODO: Navigate to restaurant detail page
+                          print('Navigate to restaurant: ${restaurant.title}');
+                        },
+                      );
+                    },
+                  ),
+        ),
+
+        const SizedBox(height: 16),
       ],
     );
   }

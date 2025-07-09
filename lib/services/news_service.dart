@@ -5,97 +5,135 @@ class NewsService {
   factory NewsService() => _instance;
   NewsService._internal();
 
-  // Sample news data
+  // Sample news data for Ramsey, Isle of Man
   static final List<News> _news = [
     News(
       id: '1',
-      title: 'Breaking: New Tax Strategies for 2025',
+      title: 'Ramsey Harbour Regeneration Project Gets Green Light',
       description:
-          'Discover the latest tax-saving strategies that could save you thousands this year.',
+          'Major redevelopment of Ramsey Harbour will bring new shops, restaurants and visitor facilities.',
       content:
-          'With the new tax year approaching, financial experts are highlighting several key strategies that could significantly impact your tax bill. From retirement contributions to strategic deductions, here\'s what you need to know...',
-      publishedDate: DateTime.now().subtract(const Duration(hours: 2)),
-      imageUrl: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=200&fit=crop',
-      author: 'Sarah Johnson',
-      category: NewsCategory.taxes,
-      tags: ['tax planning', 'savings', '2025'],
+          'The long-awaited Ramsey Harbour regeneration project has received final approval from the Isle of Man Government. The £15 million development will transform the harbour area with new retail spaces, dining options, and improved facilities for both locals and tourists...',
+      publishedDate: DateTime.now().subtract(const Duration(hours: 3)),
+      imageUrl:
+          'https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?w=400&h=200&fit=crop',
+      author: 'Emma Corlett',
+      category: NewsCategory.realEstate,
+      tags: ['harbour', 'development', 'tourism'],
       isFeatured: true,
       readTimeMinutes: 5,
     ),
     News(
       id: '2',
-      title: 'Investment Market Update: What to Watch',
+      title: 'Ramsey Grammar School Achieves Outstanding Ofsted Rating',
       description:
-          'Key market trends and investment opportunities for the current quarter.',
+          'Local secondary school receives highest possible rating in recent inspection.',
       content:
-          'The investment landscape continues to evolve with new opportunities and challenges emerging across various sectors. Our analysis shows...',
-      publishedDate: DateTime.now().subtract(const Duration(hours: 5)),
-      imageUrl: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&h=200&fit=crop',
-      author: 'Michael Chen',
-      category: NewsCategory.investing,
-      tags: ['market analysis', 'investing', 'trends'],
-      isFeatured: false,
-      readTimeMinutes: 7,
-    ),
-    News(
-      id: '3',
-      title: 'Emergency Fund Essentials: How Much is Enough?',
-      description:
-          'Financial experts weigh in on building the perfect emergency fund for your situation.',
-      content:
-          'Building an emergency fund is one of the most crucial steps in achieving financial security. But how much should you save?',
-      publishedDate: DateTime.now().subtract(const Duration(days: 1)),
-      imageUrl: null, // Test without image
-      author: 'Lisa Rodriguez',
-      category: NewsCategory.budgeting,
-      tags: ['emergency fund', 'budgeting', 'savings'],
+          'Ramsey Grammar School has been awarded an Outstanding rating by Ofsted inspectors, placing it among the top-performing schools on the Isle of Man. The report praised the school\'s academic excellence and strong community links...',
+      publishedDate: DateTime.now().subtract(const Duration(hours: 8)),
+      imageUrl:
+          'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=200&fit=crop',
+      author: 'James Quirk',
+      category: NewsCategory.budgeting, // Education/Community
+      tags: ['education', 'school', 'achievement'],
       isFeatured: true,
       readTimeMinutes: 4,
     ),
     News(
-      id: '4',
-      title: 'Debt Payoff Success Stories: Real People, Real Results',
+      id: '3',
+      title: 'New Electric Bus Service Connects Ramsey to Douglas',
       description:
-          'Inspiring stories from individuals who successfully eliminated their debt using proven strategies.',
+          'Eco-friendly transport initiative launches with regular services between north and south.',
       content:
-          'Meet three families who transformed their financial lives by following disciplined debt payoff strategies...',
-      publishedDate: DateTime.now().subtract(const Duration(days: 2)),
-      imageUrl: 'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=400&h=200&fit=crop',
-      author: 'David Thompson',
-      category: NewsCategory.debt,
-      tags: ['debt payoff', 'success stories', 'financial freedom'],
+          'A new electric bus service has been launched connecting Ramsey to Douglas, providing an environmentally friendly transport option for commuters and visitors. The service runs every 30 minutes during peak hours...',
+      publishedDate: DateTime.now().subtract(const Duration(days: 1)),
+      imageUrl:
+          'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=400&h=200&fit=crop',
+      author: 'Sarah Craine',
+      category: NewsCategory.investing, // Transport/Environment
+      tags: ['transport', 'electric', 'environment'],
       isFeatured: false,
-      readTimeMinutes: 6,
+      readTimeMinutes: 3,
+    ),
+    News(
+      id: '4',
+      title: 'Ramsey Farmers Market Celebrates 10th Anniversary',
+      description:
+          'Local market continues to grow, supporting island producers and bringing community together.',
+      content:
+          'The popular Ramsey Farmers Market is celebrating its 10th anniversary this weekend with special events and activities. What started as a small gathering of local producers has grown into one of the island\'s most popular weekly events...',
+      publishedDate: DateTime.now().subtract(const Duration(days: 2)),
+      imageUrl:
+          'https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=400&h=200&fit=crop',
+      author: 'Peter Kneale',
+      category: NewsCategory.budgeting, // Local Community
+      tags: ['farmers market', 'local produce', 'community'],
+      isFeatured: false,
+      readTimeMinutes: 4,
     ),
     News(
       id: '5',
-      title: 'Retirement Planning in Your 30s: Start Now or Pay Later',
+      title: 'Mooragh Park Lake Restoration Project Begins',
       description:
-          'Why starting retirement planning early can make or break your financial future.',
+          'Major conservation work starts to preserve Ramsey\'s beloved lake and park facilities.',
       content:
-          'The power of compound interest becomes most apparent when you start retirement planning in your 30s...',
+          'Work has begun on the comprehensive restoration of Mooragh Park Lake, one of Ramsey\'s most cherished green spaces. The project will improve water quality, enhance wildlife habitats, and upgrade visitor facilities...',
       publishedDate: DateTime.now().subtract(const Duration(days: 3)),
-      imageUrl: null, // Test without image
-      author: 'Emily Parker',
-      category: NewsCategory.retirement,
-      tags: ['retirement', 'compound interest', 'financial planning'],
-      isFeatured: false,
-      readTimeMinutes: 8,
+      imageUrl:
+          'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=200&fit=crop',
+      author: 'Helen Gelling',
+      category: NewsCategory.realEstate, // Environment/Parks
+      tags: ['mooragh park', 'conservation', 'wildlife'],
+      isFeatured: true,
+      readTimeMinutes: 6,
     ),
     News(
       id: '6',
-      title: 'Real Estate Market Trends: Buy, Sell, or Wait?',
+      title: 'Ramsey Football Club Secures Promotion to Premier League',
       description:
-          'Current real estate market analysis and predictions for the coming months.',
+          'Local team\'s stellar season culminates in promotion to island\'s top football division.',
       content:
-          'The real estate market continues to show interesting patterns that both buyers and sellers should understand...',
-      publishedDate: DateTime.now().subtract(const Duration(days: 5)),
-      imageUrl: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=200&fit=crop',
-      author: 'Robert Kim',
-      category: NewsCategory.realEstate,
-      tags: ['real estate', 'market trends', 'buying', 'selling'],
+          'Ramsey Football Club has secured promotion to the Isle of Man Premier League following an exceptional season. The team\'s success has brought the whole town together in celebration...',
+      publishedDate: DateTime.now().subtract(const Duration(days: 4)),
+      imageUrl:
+          'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=400&h=200&fit=crop',
+      author: 'Michael Kelly',
+      category: NewsCategory.debt, // Sports/Community
+      tags: ['football', 'sport', 'promotion'],
       isFeatured: false,
-      readTimeMinutes: 10,
+      readTimeMinutes: 5,
+    ),
+    News(
+      id: '7',
+      title: 'Historic Ramsey Courthouse Restoration Unveiled',
+      description:
+          'Grade II listed building reopens after extensive renovation, housing new community services.',
+      content:
+          'The historic Ramsey Courthouse has reopened its doors following an extensive restoration project. The Grade II listed building now houses community services and a heritage center showcasing the town\'s rich history...',
+      publishedDate: DateTime.now().subtract(const Duration(days: 6)),
+      imageUrl:
+          'https://images.unsplash.com/photo-1467103956184-29135c4bf58e?w=400&h=200&fit=crop',
+      author: 'Anne Christian',
+      category: NewsCategory.realEstate,
+      tags: ['heritage', 'restoration', 'community'],
+      isFeatured: false,
+      readTimeMinutes: 7,
+    ),
+    News(
+      id: '8',
+      title: 'Ramsey Bay Marine Protected Area Shows Conservation Success',
+      description:
+          'Wildlife surveys reveal significant improvement in marine biodiversity around Ramsey coastline.',
+      content:
+          'Recent marine surveys in Ramsey Bay have shown remarkable success in conservation efforts. The protected area status has led to increased fish populations and the return of several marine species...',
+      publishedDate: DateTime.now().subtract(const Duration(days: 7)),
+      imageUrl:
+          'https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=200&fit=crop',
+      author: 'Dr. Rachel Corrin',
+      category: NewsCategory.investing, // Environment
+      tags: ['marine conservation', 'wildlife', 'environment'],
+      isFeatured: false,
+      readTimeMinutes: 8,
     ),
   ];
 

@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: 'Home Screen',
+        title: 'Welcome to Ramsey',
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
