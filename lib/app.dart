@@ -79,7 +79,7 @@ class MyApp extends StatelessWidget {
         appBarTheme: const AppBarTheme(
           backgroundColor: AppColours.primary,
           foregroundColor: AppColours.textInverse,
-          elevation: 2,
+          elevation: 0,
           titleTextStyle: TextStyles.appBarTitle,
           toolbarTextStyle: TextStyles.appBarSubtitle,
           iconTheme: IconThemeData(color: AppColours.textInverse, size: 24),
@@ -88,7 +88,7 @@ class MyApp extends StatelessWidget {
         // Card theme
         cardTheme: CardThemeData(
           color: AppColours.cardBackground,
-          elevation: 2,
+          elevation: 0,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(12)),
           ),
@@ -101,7 +101,7 @@ class MyApp extends StatelessWidget {
             backgroundColor: AppColours.primary,
             foregroundColor: AppColours.textInverse,
             textStyle: TextStyles.buttonMedium,
-            elevation: 2,
+            elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
             ),
@@ -192,7 +192,7 @@ class MyApp extends StatelessWidget {
           ),
           unselectedLabelStyle: TextStyles.labelSmall,
           type: BottomNavigationBarType.fixed,
-          elevation: 8,
+          elevation: 0,
         ),
 
         // Use Material 3
