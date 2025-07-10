@@ -48,50 +48,48 @@ class HomeFoodAndDrink extends StatelessWidget {
           ),
         ),
 
-        // Restaurant cards vertical scroll
-        SizedBox(
-          height: 340, // Fixed height for the ListView
-          child:
-              restaurants.isEmpty
-                  ? Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.restaurant_outlined,
-                          size: 80,
-                          color: Colors.grey[400],
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          'No restaurants available',
-                          style: Theme.of(context).textTheme.headlineSmall
-                              ?.copyWith(color: Colors.grey[600]),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          'Check back later for dining options',
-                          style: Theme.of(context).textTheme.bodyMedium
-                              ?.copyWith(color: Colors.grey[500]),
-                        ),
-                      ],
-                    ),
-                  )
-                  : ListView.builder(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    itemCount: restaurants.length,
-                    itemBuilder: (context, index) {
-                      final restaurant = restaurants[index];
-                      return RestaurantCard(
-                        restaurant: restaurant,
-                        onTap: () {
-                          // TODO: Navigate to restaurant detail page
-                          print('Navigate to restaurant: ${restaurant.title}');
-                        },
-                      );
-                    },
+        // Restaurant cards as column (no inner scroll)
+        restaurants.isEmpty
+            ? Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 40.0),
+                child: Center(
+                  child: Column(
+                    children: [
+                      Icon(
+                        Icons.restaurant_outlined,
+                        size: 80,
+                        color: Colors.grey[400],
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        'No restaurants available',
+                        style: Theme.of(context).textTheme.headlineSmall
+                            ?.copyWith(color: Colors.grey[600]),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        'Check back later for dining options',
+                        style: Theme.of(context).textTheme.bodyMedium
+                            ?.copyWith(color: Colors.grey[500]),
+                      ),
+                    ],
                   ),
-        ),
+                ),
+              )
+            : Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Column(
+                  children: restaurants.map((restaurant) {
+                    return RestaurantCard(
+                      restaurant: restaurant,
+                      onTap: () {
+                        // TODO: Navigate to restaurant detail page
+                        print('Navigate to restaurant: ${restaurant.title}');
+                      },
+                    );
+                  }).toList(),
+                ),
+              ),
 
         const SizedBox(height: 16),
       ],
