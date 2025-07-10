@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// Reusable event card widget for displaying event information
+// Reusable event card widget with image-focused layout
 class EventCard extends StatelessWidget {
   final Map<String, dynamic> event;
 
@@ -11,9 +11,8 @@ class EventCard extends StatelessWidget {
     return Container(
       width: 280,
       margin: const EdgeInsets.only(right: 12.0),
-      padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(12.0),
         boxShadow: [
           BoxShadow(
@@ -27,75 +26,75 @@ class EventCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          // Event image at the top
+          // Event image covering the top of the card
           Container(
-            height: 40,
+            height: 110,
             width: double.infinity,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.0),
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(12.0),
+              ),
               color: Colors.grey[300],
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(12.0),
+              ),
               child: event['imageUrl'] != null && event['imageUrl'].isNotEmpty
                   ? Image.network(
                       event['imageUrl'],
                       fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) {
                         return Container(
-                          color: Colors.white.withValues(alpha: 0.2),
+                          color: Colors.grey[200],
                           child: Icon(
                             Icons.image,
-                            color: Colors.white.withValues(alpha: 0.7),
+                            color: Colors.grey[400],
                             size: 24,
                           ),
                         );
                       },
                     )
                   : Container(
-                      color: Colors.white.withValues(alpha: 0.2),
+                      color: Colors.grey[200],
                       child: Icon(
                         Icons.event,
-                        color: Colors.white.withValues(alpha: 0.7),
+                        color: Colors.grey[400],
                         size: 24,
                       ),
                     ),
             ),
           ),
-          const SizedBox(height: 6),
-          Text(
-            event['title'] ?? 'Event',
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 13,
-              fontWeight: FontWeight.bold,
-            ),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-          const SizedBox(height: 2),
-          Text(
-            _formatDate(event['date']),
-            style: TextStyle(
-              color: Colors.white.withValues(alpha: 0.9),
-              fontSize: 11,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          if (event['description'] != null) ...[
-            const SizedBox(height: 2),
-            Flexible(
-              child: Text(
-                event['description'],
-                style: TextStyle(
-                  color: Colors.white.withValues(alpha: 0.8),
-                  fontSize: 9,
+          // Content section with padding
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Date first
+                Text(
+                  _formatDate(event['date']),
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontSize: 10,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
+                const SizedBox(height: 2),
+                // Title below date
+                Text(
+                  event['title'] ?? 'Event',
+                  style: const TextStyle(
+                    color: Colors.black87,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
             ),
-          ],
+          ),
         ],
       ),
     );
