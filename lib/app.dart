@@ -14,18 +14,19 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // Primary color scheme
-        primarySwatch: MaterialColor(AppColours.primary.value, <int, Color>{
-          50: AppColours.primaryLight.withValues(alpha: 0.1),
-          100: AppColours.primaryLight.withValues(alpha: 0.2),
-          200: AppColours.primaryLight.withValues(alpha: 0.3),
-          300: AppColours.primaryLight.withValues(alpha: 0.4),
-          400: AppColours.primaryLight.withValues(alpha: 0.5),
-          500: AppColours.primary,
-          600: AppColours.primary.withValues(alpha: 0.8),
-          700: AppColours.primaryDark.withValues(alpha: 0.9),
-          800: AppColours.primaryDark,
-          900: AppColours.primaryDark.withValues(alpha: 0.8),
-        }),
+        primarySwatch:
+            MaterialColor(AppColours.primary.toARGB32(), <int, Color>{
+              50: AppColours.primaryLight.withValues(alpha: 0.1),
+              100: AppColours.primaryLight.withValues(alpha: 0.2),
+              200: AppColours.primaryLight.withValues(alpha: 0.3),
+              300: AppColours.primaryLight.withValues(alpha: 0.4),
+              400: AppColours.primaryLight.withValues(alpha: 0.5),
+              500: AppColours.primary,
+              600: AppColours.primary.withValues(alpha: 0.8),
+              700: AppColours.primaryDark.withValues(alpha: 0.9),
+              800: AppColours.primaryDark,
+              900: AppColours.primaryDark.withValues(alpha: 0.8),
+            }),
         primaryColor: AppColours.primary,
 
         // Color scheme
@@ -34,12 +35,10 @@ class MyApp extends StatelessWidget {
           primary: AppColours.primary,
           secondary: AppColours.primaryLight,
           surface: AppColours.surface,
-          background: AppColours.background,
           error: AppColours.error,
           onPrimary: AppColours.textInverse,
           onSecondary: AppColours.textPrimary,
           onSurface: AppColours.textPrimary,
-          onBackground: AppColours.textPrimary,
           onError: AppColours.textInverse,
         ),
 
@@ -200,7 +199,7 @@ class MyApp extends StatelessWidget {
       ),
 
       // Routes
-      initialRoute: '/',
+      initialRoute: AppRoutes.main,
       routes: AppRoutes.routes,
     );
   }

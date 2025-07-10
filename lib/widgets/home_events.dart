@@ -32,8 +32,7 @@ class HomeEvents extends StatelessWidget {
                 CustomButton(
                   text: 'See All',
                   onPressed: () {
-                    // TODO: Navigate to events page
-                    print('Navigate to all events');
+                    Navigator.pushNamed(context, '/events');
                   },
                   color: Theme.of(context).primaryColor,
                   textColor: Colors.white,

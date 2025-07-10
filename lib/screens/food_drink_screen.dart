@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:ramsey_app/widgets/custom_app_bar.dart';
+import '../widgets/custom_app_bar.dart';
 
-class EventsScreen extends StatelessWidget {
-  const EventsScreen({super.key});
+class FoodDrinkScreen extends StatelessWidget {
+  const FoodDrinkScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
-        title: 'Events',
+        title: 'Food & Drink',
         automaticallyImplyLeading: false,
       ),
       body: const SingleChildScrollView(
@@ -17,46 +17,46 @@ class EventsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Events',
+              'Food & Drink',
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 16),
             Text(
-              'Discover upcoming events, festivals, and activities happening on the Isle of Man.',
+              'Discover the best dining experiences and beverage options on the Isle of Man.',
               style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
             SizedBox(height: 32),
 
-            // Event Categories
-            _EventCategoryCard(
-              title: 'Festivals',
-              subtitle: 'Annual festivals and celebrations',
-              icon: Icons.celebration,
-              color: Colors.purple,
+            // Restaurant Categories
+            _CategoryCard(
+              title: 'Restaurants',
+              subtitle: 'Fine dining and casual eateries',
+              icon: Icons.restaurant,
+              color: Colors.orange,
             ),
             SizedBox(height: 16),
 
-            _EventCategoryCard(
-              title: 'Sports',
-              subtitle: 'Sporting events and competitions',
-              icon: Icons.sports,
-              color: Colors.red,
+            _CategoryCard(
+              title: 'Pubs & Bars',
+              subtitle: 'Traditional pubs and modern bars',
+              icon: Icons.local_bar,
+              color: Colors.amber,
             ),
             SizedBox(height: 16),
 
-            _EventCategoryCard(
-              title: 'Cultural',
-              subtitle: 'Art, music, and cultural events',
-              icon: Icons.palette,
-              color: Colors.indigo,
+            _CategoryCard(
+              title: 'Cafés',
+              subtitle: 'Coffee shops and light meals',
+              icon: Icons.local_cafe,
+              color: Colors.brown,
             ),
             SizedBox(height: 16),
 
-            _EventCategoryCard(
-              title: 'Business',
-              subtitle: 'Conferences and networking events',
-              icon: Icons.business_center,
-              color: Colors.teal,
+            _CategoryCard(
+              title: 'Local Specialties',
+              subtitle: 'Manx cuisine and traditional dishes',
+              icon: Icons.dinner_dining,
+              color: Colors.green,
             ),
             SizedBox(height: 32),
 
@@ -70,7 +70,7 @@ class EventsScreen extends StatelessWidget {
             ),
             SizedBox(height: 8),
             Text(
-              'We\'re working on bringing you a comprehensive events calendar with booking capabilities and detailed event information.',
+              'We\'re working on bringing you comprehensive food and drink recommendations. Stay tuned for restaurant reviews, menus, and booking options.',
               style: TextStyle(fontSize: 14, color: Colors.grey),
             ),
           ],
@@ -80,13 +80,13 @@ class EventsScreen extends StatelessWidget {
   }
 }
 
-class _EventCategoryCard extends StatelessWidget {
+class _CategoryCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final IconData icon;
   final Color color;
 
-  const _EventCategoryCard({
+  const _CategoryCard({
     required this.title,
     required this.subtitle,
     required this.icon,
@@ -101,7 +101,7 @@ class _EventCategoryCard extends StatelessWidget {
         onTap: () {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text('$title events coming soon!'),
+              content: Text('$title section coming soon!'),
               duration: const Duration(seconds: 2),
             ),
           );

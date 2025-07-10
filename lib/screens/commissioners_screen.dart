@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:ramsey_app/widgets/custom_app_bar.dart';
+import '../widgets/custom_app_bar.dart';
 
-class EventsScreen extends StatelessWidget {
-  const EventsScreen({super.key});
+class CommissionersScreen extends StatelessWidget {
+  const CommissionersScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
-        title: 'Events',
+        title: 'Commissioners',
         automaticallyImplyLeading: false,
       ),
       body: const SingleChildScrollView(
@@ -17,46 +17,46 @@ class EventsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Events',
+              'Commissioners',
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 16),
             Text(
-              'Discover upcoming events, festivals, and activities happening on the Isle of Man.',
+              'Connect with local commissioners and government representatives on the Isle of Man.',
               style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
             SizedBox(height: 32),
 
-            // Event Categories
-            _EventCategoryCard(
-              title: 'Festivals',
-              subtitle: 'Annual festivals and celebrations',
-              icon: Icons.celebration,
+            // Commissioner Categories
+            _CommissionerCard(
+              title: 'Local Commissioners',
+              subtitle: 'Your local government representatives',
+              icon: Icons.account_balance,
+              color: Colors.blue,
+            ),
+            SizedBox(height: 16),
+
+            _CommissionerCard(
+              title: 'Parish Commissioners',
+              subtitle: 'Parish-level government officials',
+              icon: Icons.location_city,
+              color: Colors.green,
+            ),
+            SizedBox(height: 16),
+
+            _CommissionerCard(
+              title: 'Government Departments',
+              subtitle: 'Isle of Man government departments',
+              icon: Icons.business,
+              color: Colors.orange,
+            ),
+            SizedBox(height: 16),
+
+            _CommissionerCard(
+              title: 'Contact Information',
+              subtitle: 'How to reach your representatives',
+              icon: Icons.contact_mail,
               color: Colors.purple,
-            ),
-            SizedBox(height: 16),
-
-            _EventCategoryCard(
-              title: 'Sports',
-              subtitle: 'Sporting events and competitions',
-              icon: Icons.sports,
-              color: Colors.red,
-            ),
-            SizedBox(height: 16),
-
-            _EventCategoryCard(
-              title: 'Cultural',
-              subtitle: 'Art, music, and cultural events',
-              icon: Icons.palette,
-              color: Colors.indigo,
-            ),
-            SizedBox(height: 16),
-
-            _EventCategoryCard(
-              title: 'Business',
-              subtitle: 'Conferences and networking events',
-              icon: Icons.business_center,
-              color: Colors.teal,
             ),
             SizedBox(height: 32),
 
@@ -70,7 +70,7 @@ class EventsScreen extends StatelessWidget {
             ),
             SizedBox(height: 8),
             Text(
-              'We\'re working on bringing you a comprehensive events calendar with booking capabilities and detailed event information.',
+              'We\'re working on bringing you comprehensive information about local commissioners, their contact details, and how to engage with local government.',
               style: TextStyle(fontSize: 14, color: Colors.grey),
             ),
           ],
@@ -80,13 +80,13 @@ class EventsScreen extends StatelessWidget {
   }
 }
 
-class _EventCategoryCard extends StatelessWidget {
+class _CommissionerCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final IconData icon;
   final Color color;
 
-  const _EventCategoryCard({
+  const _CommissionerCard({
     required this.title,
     required this.subtitle,
     required this.icon,
@@ -101,7 +101,7 @@ class _EventCategoryCard extends StatelessWidget {
         onTap: () {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text('$title events coming soon!'),
+              content: Text('$title section coming soon!'),
               duration: const Duration(seconds: 2),
             ),
           );
