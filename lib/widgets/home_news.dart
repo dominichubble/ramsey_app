@@ -32,7 +32,7 @@ class HomeNews extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 300, // Fixed height for the ListView
+          height: 300, // Fixed height for the PageView
           child: NewsCards(newsItems: latestNews),
         ),
       ],

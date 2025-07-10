@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
 import '../models/news.dart';
 
 // Enhanced news card that works with both Map and News model
@@ -42,7 +43,7 @@ class NewsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+      margin: const EdgeInsets.symmetric(vertical: 4.0),
       elevation: isFeatured == true ? 4 : 2,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,9 +83,13 @@ class NewsCard extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     CircularProgressIndicator(
-                                      value: loadingProgress.expectedTotalBytes != null
-                                          ? loadingProgress.cumulativeBytesLoaded /
-                                              loadingProgress.expectedTotalBytes!
+                                      value:
+                                          loadingProgress.expectedTotalBytes !=
+                                              null
+                                          ? loadingProgress
+                                                    .cumulativeBytesLoaded /
+                                                loadingProgress
+                                                    .expectedTotalBytes!
                                           : null,
                                       strokeWidth: 2,
                                     ),
@@ -114,13 +119,17 @@ class NewsCard extends StatelessWidget {
                                   Icon(
                                     Icons.article_outlined,
                                     size: 40,
-                                    color: Theme.of(context).primaryColor.withValues(alpha: 0.6),
+                                    color: Theme.of(
+                                      context,
+                                    ).primaryColor.withValues(alpha: 0.6),
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
                                     category ?? 'News',
                                     style: TextStyle(
-                                      color: Theme.of(context).primaryColor.withValues(alpha: 0.8),
+                                      color: Theme.of(
+                                        context,
+                                      ).primaryColor.withValues(alpha: 0.8),
                                       fontSize: 14,
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -138,13 +147,17 @@ class NewsCard extends StatelessWidget {
                               Icon(
                                 Icons.article_outlined,
                                 size: 40,
-                                color: Theme.of(context).primaryColor.withValues(alpha: 0.6),
+                                color: Theme.of(
+                                  context,
+                                ).primaryColor.withValues(alpha: 0.6),
                               ),
                               const SizedBox(height: 8),
                               Text(
                                 category ?? 'News',
                                 style: TextStyle(
-                                  color: Theme.of(context).primaryColor.withValues(alpha: 0.8),
+                                  color: Theme.of(
+                                    context,
+                                  ).primaryColor.withValues(alpha: 0.8),
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
