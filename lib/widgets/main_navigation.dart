@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import '../screens/home_screen.dart';
-import '../screens/news_screen.dart';
+
+import '../screens/commissioners_screen.dart';
 import '../screens/events_screen.dart';
 import '../screens/food_drink_screen.dart';
-import '../screens/commissioners_screen.dart';
+import '../screens/home_screen.dart';
+import '../screens/news_screen.dart';
 
 class MainNavigation extends StatefulWidget {
   const MainNavigation({super.key});
@@ -15,18 +16,27 @@ class MainNavigation extends StatefulWidget {
 class _MainNavigationState extends State<MainNavigation> {
   int _currentIndex = 0;
 
-  final List<Widget> _screens = [
-    const HomeScreen(),
-    const NewsScreen(),
-    const EventsScreen(),
-    const FoodDrinkScreen(),
-    const CommissionersScreen(),
-  ];
+  List<Widget> _buildScreens() {
+    return [
+      HomeScreen(
+        onNavigateToTab: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+      ),
+      const NewsScreen(),
+      const EventsScreen(),
+      const FoodDrinkScreen(),
+      const CommissionersScreen(),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
+    final screens = _buildScreens();
     return Scaffold(
-      body: IndexedStack(index: _currentIndex, children: _screens),
+      body: IndexedStack(index: _currentIndex, children: screens),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           color: Colors.white,

@@ -7,7 +7,9 @@ import '../widgets/home_highlights.dart';
 import '../widgets/home_news.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final Function(int)? onNavigateToTab;
+
+  const HomeScreen({super.key, this.onNavigateToTab});
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +32,13 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
           children: [
-            HomeNews(),
-            HomeHighlights(),
-            HomeEvents(),
-            HomeFoodAndDrink(),
+            const HomeNews(),
+            const HomeHighlights(),
+            HomeEvents(onNavigateToTab: onNavigateToTab),
+            const HomeFoodAndDrink(),
           ],
         ),
       ),

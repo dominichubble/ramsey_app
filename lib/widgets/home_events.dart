@@ -6,7 +6,9 @@ import '../widgets/home_events_calendar.dart';
 import '../widgets/home_main_event.dart';
 
 class HomeEvents extends StatelessWidget {
-  const HomeEvents({super.key});
+  final Function(int)? onNavigateToTab;
+
+  const HomeEvents({super.key, this.onNavigateToTab});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,11 @@ class HomeEvents extends StatelessWidget {
                 CustomButton(
                   text: 'See All',
                   onPressed: () {
-                    Navigator.pushNamed(context, '/events');
+                    if (onNavigateToTab != null) {
+                      onNavigateToTab!(2); // Events tab is at index 2
+                    } else {
+                      Navigator.pushNamed(context, '/events');
+                    }
                   },
                   color: Theme.of(context).primaryColor,
                   textColor: Colors.white,

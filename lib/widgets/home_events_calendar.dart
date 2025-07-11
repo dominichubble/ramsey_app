@@ -193,7 +193,7 @@ class _EventsCalendarState extends State<EventsCalendar> {
 
         // Events horizontal scroll
         SizedBox(
-          height: 160,
+          height: 170,
           child: filteredEvents.isEmpty
               ? Center(
                   child: Text(

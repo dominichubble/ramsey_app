@@ -16,8 +16,12 @@ class MainEvent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.all(8.0),
-      child: SizedBox(
-        height: 120,
+      child: Container(
+        height: 125,
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.grey[300]!, width: 1.0),
+          borderRadius: BorderRadius.circular(8.0),
+        ),
         child: Row(
           children: [
             // Left side - Text content
@@ -42,12 +46,11 @@ class MainEvent extends StatelessWidget {
                         const SizedBox(height: 4),
                         Text(
                           date,
-                          style: Theme.of(
-                            context,
-                          ).textTheme.headlineMedium?.copyWith(
-                            color: Colors.grey[600],
-                            fontWeight: FontWeight.w500,
-                          ),
+                          style: Theme.of(context).textTheme.headlineMedium
+                              ?.copyWith(
+                                color: Colors.grey[600],
+                                fontWeight: FontWeight.w500,
+                              ),
                         ),
                       ],
                     ),
