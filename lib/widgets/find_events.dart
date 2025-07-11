@@ -13,12 +13,12 @@ class FindEvents extends StatefulWidget {
 
 class _FindEventsState extends State<FindEvents> {
   final EventService _eventService = EventService();
-  final TextEditingController _fromController = TextEditingController();
-  final TextEditingController _toController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
 
   List<Event> _allEvents = [];
   List<Event> _filteredEvents = [];
   bool _hasSearched = false;
+  DateTimeRange? _selectedDateRange;
 
   @override
   void initState() {
@@ -28,8 +28,7 @@ class _FindEventsState extends State<FindEvents> {
 
   @override
   void dispose() {
-    _fromController.dispose();
-    _toController.dispose();
+    _searchController.dispose();
     super.dispose();
   }
 
@@ -41,30 +40,47 @@ class _FindEventsState extends State<FindEvents> {
     setState(() {
       _hasSearched = true;
 
-      if (_fromController.text.isEmpty && _toController.text.isEmpty) {
+      if (_searchController.text.isEmpty && _selectedDateRange == null) {
         _filteredEvents = _allEvents;
       } else {
         _filteredEvents = _allEvents.where((event) {
-          final eventTitle = event.title.toLowerCase();
-          final eventLocation = (event.location ?? '').toLowerCase();
-          final eventDescription = event.description.toLowerCase();
-
-          final fromQuery = _fromController.text.toLowerCase();
-          final toQuery = _toController.text.toLowerCase();
-
-          bool matchesFrom =
-              fromQuery.isEmpty ||
-              eventTitle.contains(fromQuery) ||
-              eventLocation.contains(fromQuery) ||
-              eventDescription.contains(fromQuery);
-
-          bool matchesTo =
-              toQuery.isEmpty ||
-              eventTitle.contains(toQuery) ||
-              eventLocation.contains(toQuery) ||
-              eventDescription.contains(toQuery);
-
-          return matchesFrom && matchesTo;
+          // Text search filter
+          bool matchesText = true;
+          if (_searchController.text.isNotEmpty) {
+            final searchQuery = _searchController.text.toLowerCase();
+            final eventTitle = event.title.toLowerCase();
+            final eventLocation = (event.location ?? '').toLowerCase();
+            final eventDescription = event.description.toLowerCase();
+            
+            matchesText = eventTitle.contains(searchQuery) ||
+                         eventLocation.contains(searchQuery) ||
+                         eventDescription.contains(searchQuery);
+          }
+          
+          // Date range filter
+          bool matchesDate = true;
+          if (_selectedDateRange != null) {
+            final eventDate = DateTime(
+              event.date.year,
+              event.date.month,
+              event.date.day,
+            );
+            final startDate = DateTime(
+              _selectedDateRange!.start.year,
+              _selectedDateRange!.start.month,
+              _selectedDateRange!.start.day,
+            );
+            final endDate = DateTime(
+              _selectedDateRange!.end.year,
+              _selectedDateRange!.end.month,
+              _selectedDateRange!.end.day,
+            );
+            
+            matchesDate = (eventDate.isAtSameMomentAs(startDate) || eventDate.isAfter(startDate)) &&
+                         (eventDate.isAtSameMomentAs(endDate) || eventDate.isBefore(endDate));
+          }
+          
+          return matchesText && matchesDate;
         }).toList();
       }
     });
@@ -72,11 +88,45 @@ class _FindEventsState extends State<FindEvents> {
 
   void _clearSelection() {
     setState(() {
-      _fromController.clear();
-      _toController.clear();
+      _searchController.clear();
+      _selectedDateRange = null;
       _filteredEvents = [];
       _hasSearched = false;
     });
+  }
+
+  Future<void> _selectDateRange() async {
+    final DateTimeRange? picked = await showDateRangePicker(
+      context: context,
+      firstDate: DateTime.now().subtract(const Duration(days: 365)),
+      lastDate: DateTime.now().add(const Duration(days: 365)),
+      initialDateRange: _selectedDateRange,
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: Theme.of(context).colorScheme.copyWith(
+              primary: Theme.of(context).primaryColor,
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+    
+    if (picked != null && picked != _selectedDateRange) {
+      setState(() {
+        _selectedDateRange = picked;
+      });
+    }
+  }
+
+  String get _dateRangeText {
+    if (_selectedDateRange == null) {
+      return 'Select date range...';
+    }
+    final start = _selectedDateRange!.start;
+    final end = _selectedDateRange!.end;
+    return '${start.day}/${start.month}/${start.year} - ${end.day}/${end.month}/${end.year}';
   }
 
   @override
@@ -108,11 +158,11 @@ class _FindEventsState extends State<FindEvents> {
                 ),
                 const SizedBox(height: 8),
 
-                // From TextField
+                // Search TextField
                 TextField(
-                  controller: _fromController,
+                  controller: _searchController,
                   decoration: InputDecoration(
-                    hintText: 'Search events, locations...',
+                    hintText: 'Search events, locations, activities...',
                     border: InputBorder.none,
                     suffixIcon: Icon(
                       Icons.search,
@@ -125,15 +175,44 @@ class _FindEventsState extends State<FindEvents> {
                 Divider(color: Colors.grey[300]),
                 const SizedBox(height: 8),
 
-                // To TextField
-                TextField(
-                  controller: _toController,
-                  decoration: InputDecoration(
-                    hintText: 'Additional search terms...',
-                    border: InputBorder.none,
-                    suffixIcon: Icon(
-                      Icons.filter_list,
-                      color: Theme.of(context).primaryColor,
+                // Date Range Selector
+                GestureDetector(
+                  onTap: _selectDateRange,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 12.0),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.date_range,
+                          color: Theme.of(context).primaryColor,
+                          size: 20,
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            _dateRangeText,
+                            style: TextStyle(
+                              color: _selectedDateRange == null 
+                                  ? Colors.grey[600] 
+                                  : Colors.black87,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                        if (_selectedDateRange != null)
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _selectedDateRange = null;
+                              });
+                            },
+                            child: Icon(
+                              Icons.clear,
+                              color: Colors.grey[600],
+                              size: 20,
+                            ),
+                          ),
+                      ],
                     ),
                   ),
                 ),
