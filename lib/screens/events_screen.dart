@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ramsey_app/widgets/custom_app_bar.dart';
 
+import '../widgets/find_events.dart';
+
 class EventsScreen extends StatelessWidget {
   const EventsScreen({super.key});
 
@@ -12,137 +14,11 @@ class EventsScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
       ),
       body: const SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Events',
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 16),
-            Text(
-              'Discover upcoming events, festivals, and activities happening on the Isle of Man.',
-              style: TextStyle(fontSize: 16, color: Colors.grey),
-            ),
-            SizedBox(height: 32),
-
-            // Event Categories
-            _EventCategoryCard(
-              title: 'Festivals',
-              subtitle: 'Annual festivals and celebrations',
-              icon: Icons.celebration,
-              color: Colors.purple,
-            ),
-            SizedBox(height: 16),
-
-            _EventCategoryCard(
-              title: 'Sports',
-              subtitle: 'Sporting events and competitions',
-              icon: Icons.sports,
-              color: Colors.red,
-            ),
-            SizedBox(height: 16),
-
-            _EventCategoryCard(
-              title: 'Cultural',
-              subtitle: 'Art, music, and cultural events',
-              icon: Icons.palette,
-              color: Colors.indigo,
-            ),
-            SizedBox(height: 16),
-
-            _EventCategoryCard(
-              title: 'Business',
-              subtitle: 'Conferences and networking events',
-              icon: Icons.business_center,
-              color: Colors.teal,
-            ),
-            SizedBox(height: 32),
-
-            Text(
-              'Coming Soon',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-                color: Colors.grey,
-              ),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'We\'re working on bringing you a comprehensive events calendar with booking capabilities and detailed event information.',
-              style: TextStyle(fontSize: 14, color: Colors.grey),
-            ),
+            FindEvents(),
+            // Add more widgets here
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class _EventCategoryCard extends StatelessWidget {
-  final String title;
-  final String subtitle;
-  final IconData icon;
-  final Color color;
-
-  const _EventCategoryCard({
-    required this.title,
-    required this.subtitle,
-    required this.icon,
-    required this.color,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      elevation: 2,
-      child: InkWell(
-        onTap: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('$title events coming soon!'),
-              duration: const Duration(seconds: 2),
-            ),
-          );
-        },
-        borderRadius: BorderRadius.circular(8),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            children: [
-              Container(
-                width: 50,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: color.withValues(alpha: 0.1),
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                child: Icon(icon, color: color, size: 28),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      subtitle,
-                      style: TextStyle(fontSize: 14, color: Colors.grey[600]),
-                    ),
-                  ],
-                ),
-              ),
-              Icon(Icons.arrow_forward_ios, color: Colors.grey[400], size: 16),
-            ],
-          ),
         ),
       ),
     );
