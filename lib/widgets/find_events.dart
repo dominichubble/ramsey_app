@@ -51,12 +51,13 @@ class _FindEventsState extends State<FindEvents> {
             final eventTitle = event.title.toLowerCase();
             final eventLocation = (event.location ?? '').toLowerCase();
             final eventDescription = event.description.toLowerCase();
-            
-            matchesText = eventTitle.contains(searchQuery) ||
-                         eventLocation.contains(searchQuery) ||
-                         eventDescription.contains(searchQuery);
+
+            matchesText =
+                eventTitle.contains(searchQuery) ||
+                eventLocation.contains(searchQuery) ||
+                eventDescription.contains(searchQuery);
           }
-          
+
           // Date range filter
           bool matchesDate = true;
           if (_selectedDateRange != null) {
@@ -75,11 +76,14 @@ class _FindEventsState extends State<FindEvents> {
               _selectedDateRange!.end.month,
               _selectedDateRange!.end.day,
             );
-            
-            matchesDate = (eventDate.isAtSameMomentAs(startDate) || eventDate.isAfter(startDate)) &&
-                         (eventDate.isAtSameMomentAs(endDate) || eventDate.isBefore(endDate));
+
+            matchesDate =
+                (eventDate.isAtSameMomentAs(startDate) ||
+                    eventDate.isAfter(startDate)) &&
+                (eventDate.isAtSameMomentAs(endDate) ||
+                    eventDate.isBefore(endDate));
           }
-          
+
           return matchesText && matchesDate;
         }).toList();
       }
@@ -104,15 +108,15 @@ class _FindEventsState extends State<FindEvents> {
       builder: (context, child) {
         return Theme(
           data: Theme.of(context).copyWith(
-            colorScheme: Theme.of(context).colorScheme.copyWith(
-              primary: Theme.of(context).primaryColor,
-            ),
+            colorScheme: Theme.of(
+              context,
+            ).colorScheme.copyWith(primary: Theme.of(context).primaryColor),
           ),
           child: child!,
         );
       },
     );
-    
+
     if (picked != null && picked != _selectedDateRange) {
       setState(() {
         _selectedDateRange = picked;
@@ -192,8 +196,8 @@ class _FindEventsState extends State<FindEvents> {
                           child: Text(
                             _dateRangeText,
                             style: TextStyle(
-                              color: _selectedDateRange == null 
-                                  ? Colors.grey[600] 
+                              color: _selectedDateRange == null
+                                  ? Colors.grey[600]
                                   : Colors.black87,
                               fontSize: 16,
                             ),
