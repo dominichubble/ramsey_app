@@ -97,7 +97,9 @@ class JsonEventService {
   /// Update event (updates in-memory cache, would need to save to persistent storage)
   Future<void> updateEvent(Event updatedEvent) async {
     _cachedEvents ??= await getAllEvents();
-    final index = _cachedEvents!.indexWhere((event) => event.id == updatedEvent.id);
+    final index = _cachedEvents!.indexWhere(
+      (event) => event.id == updatedEvent.id,
+    );
     if (index != -1) {
       _cachedEvents![index] = updatedEvent;
     }
