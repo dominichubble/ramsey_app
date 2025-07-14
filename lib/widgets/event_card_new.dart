@@ -29,13 +29,6 @@ class EventCard extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(12.0),
           border: Border.all(color: Colors.grey[300]!, width: 2.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.05),
-              blurRadius: 4,
-              offset: const Offset(0, 2),
-            ),
-          ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,22 +99,6 @@ class EventCard extends StatelessWidget {
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 4),
-                  // Tap for details hint
-                  Row(
-                    children: [
-                      Icon(Icons.touch_app, size: 10, color: Colors.grey[500]),
-                      const SizedBox(width: 4),
-                      Text(
-                        'Tap for details',
-                        style: TextStyle(
-                          color: Colors.grey[500],
-                          fontSize: 9,
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),
-                    ],
                   ),
                 ],
               ),
