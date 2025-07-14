@@ -1,5 +1,7 @@
 import 'dart:convert';
+
 import 'package:flutter/services.dart';
+
 import '../models/event.dart';
 import '../models/news.dart';
 import '../models/restaurant.dart';
@@ -16,7 +18,9 @@ class DataService {
     if (_appData != null) return; // Already loaded
 
     try {
-      final String jsonString = await rootBundle.loadString('assets/data/app_data.json');
+      final String jsonString = await rootBundle.loadString(
+        'assets/data/app_data.json',
+      );
       _appData = json.decode(jsonString);
     } catch (e) {
       print('Error loading app data: $e');
@@ -27,7 +31,7 @@ class DataService {
   /// Get all events from JSON data
   Future<List<Event>> getEventsFromJson() async {
     await loadAppData();
-    
+
     final List<dynamic> eventsJson = _appData?['events'] ?? [];
     return eventsJson.map((eventJson) => Event.fromMap(eventJson)).toList();
   }
@@ -35,7 +39,7 @@ class DataService {
   /// Get all news from JSON data
   Future<List<News>> getNewsFromJson() async {
     await loadAppData();
-    
+
     final List<dynamic> newsJson = _appData?['news'] ?? [];
     return newsJson.map((newsData) {
       return News(
@@ -43,7 +47,9 @@ class DataService {
         title: newsData['title'] ?? '',
         description: newsData['description'] ?? '',
         content: newsData['content'] ?? '',
-        publishedDate: DateTime.parse(newsData['publishedDate'] ?? DateTime.now().toIso8601String()),
+        publishedDate: DateTime.parse(
+          newsData['publishedDate'] ?? DateTime.now().toIso8601String(),
+        ),
         imageUrl: newsData['imageUrl'],
         author: newsData['author'],
         category: _parseNewsCategory(newsData['category']),
@@ -57,7 +63,7 @@ class DataService {
   /// Get all restaurants from JSON data
   Future<List<Restaurant>> getRestaurantsFromJson() async {
     await loadAppData();
-    
+
     final List<dynamic> restaurantsJson = _appData?['restaurants'] ?? [];
     return restaurantsJson.map((restaurantData) {
       return Restaurant(
@@ -79,15 +85,20 @@ class DataService {
         phoneNumber: restaurantData['phoneNumber'],
         email: restaurantData['email'],
         website: restaurantData['website'],
-        openingHours: Map<String, String>.from(restaurantData['openingHours'] ?? {}),
+        openingHours: Map<String, String>.from(
+          restaurantData['openingHours'] ?? {},
+        ),
         isOpen: restaurantData['isOpen'] ?? false,
         acceptsReservations: restaurantData['acceptsReservations'] ?? false,
         hasDelivery: restaurantData['hasDelivery'] ?? false,
         hasTakeout: restaurantData['hasTakeout'] ?? false,
         hasWifi: restaurantData['hasWifi'] ?? false,
         hasParking: restaurantData['hasParking'] ?? false,
-        isWheelchairAccessible: restaurantData['isWheelchairAccessible'] ?? false,
-        paymentMethods: List<String>.from(restaurantData['paymentMethods'] ?? []),
+        isWheelchairAccessible:
+            restaurantData['isWheelchairAccessible'] ?? false,
+        paymentMethods: List<String>.from(
+          restaurantData['paymentMethods'] ?? [],
+        ),
         tags: List<String>.from(restaurantData['tags'] ?? []),
         menu: _parseMenuItems(restaurantData['menu'] ?? []),
       );
