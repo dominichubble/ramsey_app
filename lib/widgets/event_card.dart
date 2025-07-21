@@ -43,7 +43,7 @@ class EventCard extends StatelessWidget {
           children: [
             // Event image covering the top of the card
             Container(
-              height: 110,
+              height: 100,
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.vertical(

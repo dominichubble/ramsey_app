@@ -228,7 +228,6 @@ class _FindEventsState extends State<FindEvents> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: _searchEvents,
-                    child: Text('Search Events'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Theme.of(context).primaryColor,
                       foregroundColor: Colors.white,
@@ -237,6 +236,7 @@ class _FindEventsState extends State<FindEvents> {
                         vertical: 12.0,
                       ),
                     ),
+                    child: Text('Search Events'),
                   ),
                 ),
 
@@ -247,7 +247,6 @@ class _FindEventsState extends State<FindEvents> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: _clearSelection,
-                    child: Text('Clear Selection'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.grey[300],
                       foregroundColor: Colors.black87,
@@ -256,6 +255,7 @@ class _FindEventsState extends State<FindEvents> {
                         vertical: 12.0,
                       ),
                     ),
+                    child: Text('Clear Selection'),
                   ),
                 ),
               ],
