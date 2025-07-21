@@ -18,7 +18,7 @@ class CommissionerService {
       bio:
           'Annie has been serving the Ramsey community for over 15 years, focusing on heritage preservation and community development. She previously worked in local education and has been instrumental in several town improvement projects.',
       imageUrl:
-          'https://images.unsplash.com/photo-1494790108755-2616b612b890?w=300&h=300&fit=crop&crop=face',
+          'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=300&fit=crop&crop=face',
       responsibilities: [
         'Town Planning',
         'Heritage & Tourism',
@@ -38,7 +38,7 @@ class CommissionerService {
       bio:
           'David brings extensive business experience to the commission, having run several local enterprises. He specializes in economic development and infrastructure projects for the town.',
       imageUrl:
-          'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face',
+          'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&crop=face',
       responsibilities: [
         'Economic Development',
         'Infrastructure',
@@ -58,7 +58,7 @@ class CommissionerService {
       bio:
           'Clare is passionate about environmental issues and sustainability. She leads initiatives on waste management, green spaces, and environmental protection within Ramsey.',
       imageUrl:
-          'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face',
+          'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop&crop=face',
       responsibilities: [
         'Environmental Protection',
         'Waste Management',
@@ -78,7 +78,7 @@ class CommissionerService {
       bio:
           'John has a background in public safety and emergency services. He oversees safety initiatives, traffic management, and emergency preparedness for the community.',
       imageUrl:
-          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face',
+          'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=300&h=300&fit=crop&crop=face',
       responsibilities: [
         'Public Safety',
         'Traffic & Transport',
@@ -98,7 +98,7 @@ class CommissionerService {
       bio:
           'Linda focuses on housing, social services, and community welfare. She works closely with local charities and social organizations to support vulnerable residents.',
       imageUrl:
-          'https://images.unsplash.com/photo-1554151228-14d9def656e4?w=300&h=300&fit=crop&crop=face',
+          'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=300&h=300&fit=crop&crop=face',
       responsibilities: [
         'Housing & Social Services',
         'Community Welfare',

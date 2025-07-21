@@ -16,7 +16,7 @@ class NewsService {
           'The long-awaited Ramsey Harbour regeneration project has received final approval from the Isle of Man Government. The £15 million development will transform the harbour area with new retail spaces, dining options, and improved facilities for both locals and tourists...',
       publishedDate: DateTime.now().subtract(const Duration(hours: 3)),
       imageUrl:
-          'https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?w=400&h=200&fit=crop',
+          'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=200&fit=crop',
       author: 'Emma Corlett',
       category: NewsCategory.development,
       tags: ['harbour', 'development', 'tourism'],
@@ -32,7 +32,7 @@ class NewsService {
           'Ramsey Grammar School has been awarded an Outstanding rating by Ofsted inspectors, placing it among the top-performing schools on the Isle of Man. The report praised the school\'s academic excellence and strong community links...',
       publishedDate: DateTime.now().subtract(const Duration(hours: 8)),
       imageUrl:
-          'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=200&fit=crop',
+          'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=400&h=200&fit=crop',
       author: 'James Quirk',
       category: NewsCategory.education,
       tags: ['education', 'school', 'achievement'],
@@ -48,7 +48,7 @@ class NewsService {
           'A new electric bus service has been launched connecting Ramsey to Douglas, providing an environmentally friendly transport option for commuters and visitors. The service runs every 30 minutes during peak hours...',
       publishedDate: DateTime.now().subtract(const Duration(days: 1)),
       imageUrl:
-          'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=400&h=200&fit=crop',
+          'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=400&h=200&fit=crop',
       author: 'Sarah Craine',
       category: NewsCategory.transport,
       tags: ['transport', 'electric', 'environment'],
@@ -64,7 +64,7 @@ class NewsService {
           'The popular Ramsey Farmers Market is celebrating its 10th anniversary this weekend with special events and activities. What started as a small gathering of local producers has grown into one of the island\'s most popular weekly events...',
       publishedDate: DateTime.now().subtract(const Duration(days: 2)),
       imageUrl:
-          'https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=400&h=200&fit=crop',
+          'https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=400&h=200&fit=crop',
       author: 'Peter Kneale',
       category: NewsCategory.community,
       tags: ['farmers market', 'local produce', 'community'],
@@ -80,7 +80,7 @@ class NewsService {
           'Work has begun on the comprehensive restoration of Mooragh Park Lake, one of Ramsey\'s most cherished green spaces. The project will improve water quality, enhance wildlife habitats, and upgrade visitor facilities...',
       publishedDate: DateTime.now().subtract(const Duration(days: 3)),
       imageUrl:
-          'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=200&fit=crop',
+          'https://images.unsplash.com/photo-1445108801194-7112e4936fc8?w=400&h=200&fit=crop',
       author: 'Helen Gelling',
       category: NewsCategory.environment,
       tags: ['mooragh park', 'conservation', 'wildlife'],
@@ -96,7 +96,7 @@ class NewsService {
           'Ramsey Football Club has secured promotion to the Isle of Man Premier League following an exceptional season. The team\'s success has brought the whole town together in celebration...',
       publishedDate: DateTime.now().subtract(const Duration(days: 4)),
       imageUrl:
-          'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=400&h=200&fit=crop',
+          'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=400&h=200&fit=crop',
       author: 'Michael Kelly',
       category: NewsCategory.sports,
       tags: ['football', 'sport', 'promotion'],
@@ -112,7 +112,7 @@ class NewsService {
           'The historic Ramsey Courthouse has reopened its doors following an extensive restoration project. The Grade II listed building now houses community services and a heritage center showcasing the town\'s rich history...',
       publishedDate: DateTime.now().subtract(const Duration(days: 6)),
       imageUrl:
-          'https://images.unsplash.com/photo-1467103956184-29135c4bf58e?w=400&h=200&fit=crop',
+          'https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?w=400&h=200&fit=crop',
       author: 'Anne Christian',
       category: NewsCategory.heritage,
       tags: ['heritage', 'restoration', 'community'],
@@ -128,7 +128,7 @@ class NewsService {
           'Recent marine surveys in Ramsey Bay have shown remarkable success in conservation efforts. The protected area status has led to increased fish populations and the return of several marine species...',
       publishedDate: DateTime.now().subtract(const Duration(days: 7)),
       imageUrl:
-          'https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=200&fit=crop',
+          'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=200&fit=crop',
       author: 'Dr. Rachel Corrin',
       category: NewsCategory.environment,
       tags: ['marine conservation', 'wildlife', 'environment'],
@@ -144,7 +144,7 @@ class NewsService {
           'The Ramsey Walking Festival has attracted a record number of participants this year, with over 500 people taking part in guided walks exploring the town\'s natural beauty and rich heritage. The festival featured 15 different routes...',
       publishedDate: DateTime.now().subtract(const Duration(days: 8)),
       imageUrl:
-          'https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&h=200&fit=crop',
+          'https://images.unsplash.com/photo-1502780402662-acc01917275e?w=400&h=200&fit=crop',
       author: 'Mark Corkish',
       category: NewsCategory.events,
       tags: ['walking festival', 'tourism', 'heritage'],
@@ -160,7 +160,7 @@ class NewsService {
           'Ramsey Town Commissioners have approved a comprehensive business support scheme aimed at encouraging local entrepreneurship. The initiative includes startup grants, business mentoring, and reduced rate premises for new businesses...',
       publishedDate: DateTime.now().subtract(const Duration(days: 9)),
       imageUrl:
-          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop',
+          'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=200&fit=crop',
       author: 'David Ashford',
       category: NewsCategory.townCouncil,
       tags: ['business support', 'entrepreneurs', 'town council'],
