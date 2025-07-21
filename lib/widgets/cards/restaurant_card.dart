@@ -172,7 +172,7 @@ class _RestaurantCardState extends State<RestaurantCard> {
                             shape: BoxShape.circle,
                             color: _currentImageIndex == index
                                 ? Colors.white
-                                : Colors.white.withOpacity(0.5),
+                                : Colors.white.withValues(alpha: 0.5),
                           ),
                         ),
                       ),
@@ -198,7 +198,7 @@ class _RestaurantCardState extends State<RestaurantCard> {
                           child: Container(
                             padding: const EdgeInsets.all(4),
                             decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.5),
+                              color: Colors.black.withValues(alpha: 0.5),
                               shape: BoxShape.circle,
                             ),
                             child: const Icon(
@@ -228,7 +228,7 @@ class _RestaurantCardState extends State<RestaurantCard> {
                           child: Container(
                             padding: const EdgeInsets.all(4),
                             decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.5),
+                              color: Colors.black.withValues(alpha: 0.5),
                               shape: BoxShape.circle,
                             ),
                             child: const Icon(
@@ -298,7 +298,7 @@ class _RestaurantCardState extends State<RestaurantCard> {
                         decoration: BoxDecoration(
                           color: Theme.of(
                             context,
-                          ).primaryColor.withOpacity(0.1),
+                          ).primaryColor.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Text(
