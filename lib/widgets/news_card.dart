@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../models/news.dart';
+import '../screens/news_article_screen.dart';
 
 // Enhanced news card that works with both Map and News model
 class NewsCard extends StatelessWidget {
@@ -13,6 +14,8 @@ class NewsCard extends StatelessWidget {
   final String? category;
   final String? readTime;
   final bool? isFeatured;
+  final News? newsModel; // Add the full news model for navigation
+  final VoidCallback? onTap;
 
   const NewsCard({
     super.key,
@@ -24,6 +27,8 @@ class NewsCard extends StatelessWidget {
     this.category,
     this.readTime,
     this.isFeatured,
+    this.newsModel,
+    this.onTap,
   });
 
   // Constructor from News model
@@ -37,6 +42,7 @@ class NewsCard extends StatelessWidget {
       category: news.category.displayName,
       readTime: '${news.readTimeMinutes} min read',
       isFeatured: news.isFeatured,
+      newsModel: news, // Pass the full model for navigation
     );
   }
 
@@ -45,9 +51,23 @@ class NewsCard extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 4.0),
       elevation: 0,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+      child: InkWell(
+        onTap: () {
+          if (onTap != null) {
+            onTap!();
+          } else if (newsModel != null) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => NewsArticleScreen(article: newsModel!),
+              ),
+            );
+          }
+        },
+        borderRadius: BorderRadius.circular(4),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
           // Image with featured badge
           Stack(
             children: [
@@ -293,6 +313,7 @@ class NewsCard extends StatelessWidget {
             ),
           ),
         ],
+        ),
       ),
     );
   }
