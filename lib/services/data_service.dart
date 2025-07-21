@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 import '../models/event.dart';
@@ -23,7 +24,7 @@ class DataService {
       );
       _appData = json.decode(jsonString);
     } catch (e) {
-      print('Error loading app data: $e');
+      debugPrint('Error loading app data: $e');
       _appData = {}; // Initialize with empty data
     }
   }

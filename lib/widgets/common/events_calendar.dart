@@ -121,7 +121,7 @@ class _EventsCalendarState extends State<EventsCalendar> {
           }
         }
       } catch (e) {
-        print('Error parsing date: $dateString - $e');
+        debugPrint('Error parsing date: $dateString - $e');
       }
       return null;
     }
