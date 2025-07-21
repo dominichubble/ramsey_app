@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/custom_app_bar.dart';
+import '../widgets/page_header.dart';
 import '../services/restaurant_service.dart';
 import '../models/restaurant.dart';
 import '../widgets/restaurant_card.dart';
@@ -68,33 +69,19 @@ class _FoodDrinkScreenState extends State<FoodDrinkScreen> {
       ),
       body: Column(
         children: [
-          // Header and Search
+          // Page Header
+          const PageHeader(
+            title: 'Restaurants & Dining',
+            subtitle: 'Discover the best dining experiences in Ramsey',
+            icon: Icons.restaurant,
+          ),
+
+          // Search and Filters
           Container(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.restaurant,
-                      size: 28,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      'Restaurants & Dining',
-                      style: Theme.of(context).textTheme.headlineLarge,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  'Discover the best dining experiences in Ramsey',
-                  style: TextStyle(fontSize: 16, color: Colors.grey[600]),
-                ),
-                const SizedBox(height: 16),
-
                 // Search Bar
                 TextField(
                   controller: _searchController,

@@ -3,6 +3,7 @@ import '../models/news.dart';
 import '../services/news_service.dart';
 import '../widgets/news_card.dart';
 import '../widgets/custom_app_bar.dart';
+import '../widgets/page_header.dart';
 
 class NewsScreen extends StatefulWidget {
   const NewsScreen({super.key});
@@ -46,6 +47,13 @@ class _NewsScreenState extends State<NewsScreen> {
       ),
       body: Column(
         children: [
+          // Page Header
+          const PageHeader(
+            title: 'Latest News',
+            subtitle: 'Stay updated with the latest news from Ramsey Town',
+            icon: Icons.newspaper,
+          ),
+
           // Search bar
           Padding(
             padding: const EdgeInsets.all(16.0),

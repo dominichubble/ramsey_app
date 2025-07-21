@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/custom_app_bar.dart';
+import '../widgets/page_header.dart';
 import '../widgets/commissioner_card.dart';
 import '../widgets/info_card.dart';
 import '../services/commissioner_service.dart';
@@ -19,101 +20,94 @@ class CommissionersScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Header
-            const Text(
-              'Ramsey Town Commissioners',
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Meet your elected representatives who serve the Ramsey community.',
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey[600],
-                height: 1.4,
-              ),
+            // Page Header
+            const PageHeader(
+              title: 'Ramsey Town Commissioners',
+              subtitle:
+                  'Meet your elected representatives who serve the Ramsey community.',
+              icon: Icons.groups,
             ),
 
-            const SizedBox(height: 32),
+            // Section Header for Commissioners List
+            const SectionHeader(title: 'Your Commissioners'),
 
-            // Commissioners List
-            const Text(
-              'Your Commissioners',
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Column(
+                children: [
+                  ...commissioners.map((commissioner) {
+                    return CommissionerCard(
+                      commissioner: commissioner,
+                      onTap: () {
+                        _showCommissionerDetails(context, commissioner);
+                      },
+                    );
+                  }),
 
-            ...commissioners.map((commissioner) {
-              return CommissionerCard(
-                commissioner: commissioner,
-                onTap: () {
-                  _showCommissionerDetails(context, commissioner);
-                },
-              );
-            }),
+                  const SizedBox(height: 32),
 
-            const SizedBox(height: 32),
+                  // Contact Information
+                  InfoCard(
+                    title: 'Contact Information',
+                    icon: Icons.contact_phone,
+                    information: contactInfo,
+                    color: Colors.blue,
+                  ),
 
-            // Contact Information
-            InfoCard(
-              title: 'Contact Information',
-              icon: Icons.contact_phone,
-              information: contactInfo,
-              color: Colors.blue,
-            ),
+                  const SizedBox(height: 16),
 
-            const SizedBox(height: 16),
+                  // Public Meetings
+                  InfoCard(
+                    title: 'Public Meetings',
+                    icon: Icons.event,
+                    information: meetingInfo,
+                    color: Colors.green,
+                  ),
 
-            // Meeting Information
-            InfoCard(
-              title: 'Public Meetings',
-              icon: Icons.event,
-              information: meetingInfo,
-              color: Colors.green,
-            ),
+                  const SizedBox(height: 32),
 
-            const SizedBox(height: 32),
-
-            // Additional Information
-            Card(
-              elevation: 1,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.info_outline,
-                          color: Theme.of(context).primaryColor,
-                          size: 24,
-                        ),
-                        const SizedBox(width: 8),
-                        const Text(
-                          'About the Commission',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
+                  // Additional Information
+                  Card(
+                    elevation: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.info_outline,
+                                color: Theme.of(context).primaryColor,
+                                size: 24,
+                              ),
+                              const SizedBox(width: 8),
+                              const Text(
+                                'About the Commission',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                      ],
+                          const SizedBox(height: 12),
+                          const Text(
+                            'Ramsey Town Commissioners are responsible for local government in Ramsey, including town planning, local infrastructure, environmental protection, and community services. Commissioners are elected every four years and meet regularly to discuss matters affecting the town.',
+                            style: TextStyle(fontSize: 14, height: 1.5),
+                          ),
+                        ],
+                      ),
                     ),
-                    const SizedBox(height: 12),
-                    const Text(
-                      'Ramsey Town Commissioners are responsible for local government in Ramsey, including town planning, local infrastructure, environmental protection, and community services. Commissioners are elected every four years and meet regularly to discuss matters affecting the town.',
-                      style: TextStyle(fontSize: 14, height: 1.5),
-                    ),
-                  ],
-                ),
+                  ),
+
+                  const SizedBox(height: 16),
+                ],
               ),
             ),
-
-            const SizedBox(height: 16),
           ],
         ),
       ),
