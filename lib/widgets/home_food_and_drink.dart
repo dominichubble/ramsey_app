@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 import '../services/restaurant_service.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/restaurant_card.dart';
+import '../screens/food_drink_screen.dart';
+import '../screens/restaurant_detail_screen.dart';
 
 class HomeFoodAndDrink extends StatelessWidget {
-  const HomeFoodAndDrink({super.key});
+  final Function(int)? onNavigateToTab;
+
+  const HomeFoodAndDrink({super.key, this.onNavigateToTab});
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +41,17 @@ class HomeFoodAndDrink extends StatelessWidget {
               CustomButton(
                 text: 'See All',
                 onPressed: () {
-                  // TODO: Navigate to restaurants page
-                  print('Navigate to all restaurants');
+                  // Navigate to food & drink tab or screen
+                  if (onNavigateToTab != null) {
+                    onNavigateToTab!(3); // Food & Drink is tab index 3
+                  } else {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const FoodDrinkScreen(),
+                      ),
+                    );
+                  }
                 },
                 color: Theme.of(context).primaryColor,
                 textColor: Colors.white,
@@ -51,7 +64,10 @@ class HomeFoodAndDrink extends StatelessWidget {
         // Restaurant cards as column (no inner scroll)
         restaurants.isEmpty
             ? Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 40.0),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 40.0,
+                ),
                 child: Center(
                   child: Column(
                     children: [
@@ -69,8 +85,9 @@ class HomeFoodAndDrink extends StatelessWidget {
                       const SizedBox(height: 8),
                       Text(
                         'Check back later for dining options',
-                        style: Theme.of(context).textTheme.bodyMedium
-                            ?.copyWith(color: Colors.grey[500]),
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Colors.grey[500],
+                        ),
                       ),
                     ],
                   ),
@@ -83,8 +100,13 @@ class HomeFoodAndDrink extends StatelessWidget {
                     return RestaurantCard(
                       restaurant: restaurant,
                       onTap: () {
-                        // TODO: Navigate to restaurant detail page
-                        print('Navigate to restaurant: ${restaurant.title}');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                RestaurantDetailScreen(restaurant: restaurant),
+                          ),
+                        );
                       },
                     );
                   }).toList(),

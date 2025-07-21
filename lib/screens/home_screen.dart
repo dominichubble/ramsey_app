@@ -38,7 +38,7 @@ class HomeScreen extends StatelessWidget {
             const HomeNews(),
             const HomeHighlights(),
             HomeEvents(onNavigateToTab: onNavigateToTab),
-            const HomeFoodAndDrink(),
+            HomeFoodAndDrink(onNavigateToTab: onNavigateToTab),
           ],
         ),
       ),

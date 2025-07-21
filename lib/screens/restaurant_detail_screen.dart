@@ -16,7 +16,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
   late TabController _tabController;
   late PageController _imagePageController;
   int _currentImageIndex = 0;
-  
+
   @override
   void initState() {
     super.initState();
@@ -34,9 +34,12 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
   @override
   Widget build(BuildContext context) {
     final restaurant = widget.restaurant;
-    final images = restaurant.foodImages.isNotEmpty 
-        ? restaurant.foodImages 
-        : [restaurant.coverImageUrl ?? 'https://via.placeholder.com/400x300?text=No+Image'];
+    final images = restaurant.foodImages.isNotEmpty
+        ? restaurant.foodImages
+        : [
+            restaurant.coverImageUrl ??
+                'https://via.placeholder.com/400x300?text=No+Image',
+          ];
 
     return Scaffold(
       body: CustomScrollView(
@@ -74,7 +77,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
                       );
                     },
                   ),
-                  
+
                   // Gradient overlay
                   Container(
                     decoration: BoxDecoration(
@@ -200,11 +203,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
                   // Rating and distance
                   Row(
                     children: [
-                      Icon(
-                        Icons.star,
-                        color: Colors.amber,
-                        size: 20,
-                      ),
+                      Icon(Icons.star, color: Colors.amber, size: 20),
                       const SizedBox(width: 4),
                       Text(
                         restaurant.formattedRating,
@@ -237,10 +236,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
                   // Description
                   Text(
                     restaurant.description,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      height: 1.5,
-                    ),
+                    style: const TextStyle(fontSize: 16, height: 1.5),
                   ),
 
                   const SizedBox(height: 24),
@@ -270,8 +266,10 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
                         child: _buildInfoCard(
                           icon: Icons.table_restaurant,
                           title: 'Reserve',
-                          subtitle: restaurant.acceptsReservations ? 'Book table' : 'Walk-in only',
-                          onTap: restaurant.acceptsReservations 
+                          subtitle: restaurant.acceptsReservations
+                              ? 'Book table'
+                              : 'Walk-in only',
+                          onTap: restaurant.acceptsReservations
                               ? () => _makeReservation(context)
                               : null,
                         ),
@@ -307,11 +305,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
           SliverFillRemaining(
             child: TabBarView(
               controller: _tabController,
-              children: [
-                _buildMenuTab(),
-                _buildInfoTab(),
-                _buildReviewsTab(),
-              ],
+              children: [_buildMenuTab(), _buildInfoTab(), _buildReviewsTab()],
             ),
           ),
         ],
@@ -336,7 +330,9 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
               Icon(
                 icon,
                 size: 24,
-                color: onTap != null ? Theme.of(context).primaryColor : Colors.grey,
+                color: onTap != null
+                    ? Theme.of(context).primaryColor
+                    : Colors.grey,
               ),
               const SizedBox(height: 8),
               Text(
@@ -349,10 +345,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
               const SizedBox(height: 4),
               Text(
                 subtitle,
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.grey[600],
-                ),
+                style: TextStyle(fontSize: 12, color: Colors.grey[600]),
                 textAlign: TextAlign.center,
               ),
             ],
@@ -371,11 +364,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.restaurant_menu,
-              size: 64,
-              color: Colors.grey,
-            ),
+            Icon(Icons.restaurant_menu, size: 64, color: Colors.grey),
             SizedBox(height: 16),
             Text(
               'Menu not available',
@@ -451,7 +440,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
                   },
                 ),
               ),
-            
+
             if (item.imageUrl != null) const SizedBox(width: 16),
 
             // Menu item info
@@ -483,13 +472,10 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
                   const SizedBox(height: 4),
                   Text(
                     item.description,
-                    style: TextStyle(
-                      color: Colors.grey[600],
-                      height: 1.4,
-                    ),
+                    style: TextStyle(color: Colors.grey[600], height: 1.4),
                   ),
                   const SizedBox(height: 8),
-                  
+
                   // Dietary indicators
                   Wrap(
                     spacing: 8,
@@ -500,8 +486,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
                         _buildDietaryBadge('Vegan', Colors.green),
                       if (item.isGlutenFree)
                         _buildDietaryBadge('Gluten Free', Colors.blue),
-                      if (item.isSpicy)
-                        _buildDietaryBadge('Spicy', Colors.red),
+                      if (item.isSpicy) _buildDietaryBadge('Spicy', Colors.red),
                     ],
                   ),
                 ],
@@ -569,9 +554,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
           // Features
           _buildInfoSection(
             title: 'Features & Services',
-            children: [
-              _buildFeatureGrid(),
-            ],
+            children: [_buildFeatureGrid()],
           ),
 
           const SizedBox(height: 24),
@@ -607,10 +590,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
       children: [
         Text(
           title,
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 12),
         ...children,
@@ -624,11 +604,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(
-            icon,
-            size: 20,
-            color: Colors.grey[600],
-          ),
+          Icon(icon, size: 20, color: Colors.grey[600]),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
@@ -636,17 +612,10 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
               children: [
                 Text(
                   label,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: const TextStyle(fontWeight: FontWeight.w600),
                 ),
                 const SizedBox(height: 2),
-                Text(
-                  value,
-                  style: TextStyle(
-                    color: Colors.grey[600],
-                  ),
-                ),
+                Text(value, style: TextStyle(color: Colors.grey[600])),
               ],
             ),
           ),
@@ -717,11 +686,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.rate_review,
-              size: 64,
-              color: Colors.grey,
-            ),
+            Icon(Icons.rate_review, size: 64, color: Colors.grey),
             SizedBox(height: 16),
             Text(
               'No reviews yet',
@@ -761,7 +726,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
                       onBackgroundImageError: (exception, stackTrace) {
                         // Handle image loading error
                       },
-                      child: review.userAvatar.isEmpty 
+                      child: review.userAvatar.isEmpty
                           ? const Icon(Icons.person)
                           : null,
                     ),
@@ -772,15 +737,15 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
                         children: [
                           Text(
                             review.userName,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w600,
-                            ),
+                            style: const TextStyle(fontWeight: FontWeight.w600),
                           ),
                           Row(
                             children: [
                               ...List.generate(5, (index) {
                                 return Icon(
-                                  index < review.rating ? Icons.star : Icons.star_border,
+                                  index < review.rating
+                                      ? Icons.star
+                                      : Icons.star_border,
                                   size: 16,
                                   color: Colors.amber,
                                 );
@@ -801,10 +766,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
                   ],
                 ),
                 const SizedBox(height: 12),
-                Text(
-                  review.comment,
-                  style: const TextStyle(height: 1.4),
-                ),
+                Text(review.comment, style: const TextStyle(height: 1.4)),
               ],
             ),
           ),
@@ -832,7 +794,10 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
 
   void _shareRestaurant(BuildContext context) {
     Clipboard.setData(
-      ClipboardData(text: 'Check out ${widget.restaurant.title} - ${widget.restaurant.description}'),
+      ClipboardData(
+        text:
+            'Check out ${widget.restaurant.title} - ${widget.restaurant.description}',
+      ),
     );
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Restaurant info copied to clipboard')),
@@ -855,9 +820,9 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
   }
 
   void _getDirections(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Opening directions...')),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text('Opening directions...')));
   }
 
   void _makeReservation(BuildContext context) {

@@ -25,21 +25,33 @@ class _FoodDrinkScreenState extends State<FoodDrinkScreen> {
     // Apply search filter
     if (_searchQuery.isNotEmpty) {
       restaurants = restaurants.where((restaurant) {
-        return restaurant.title.toLowerCase().contains(_searchQuery.toLowerCase()) ||
-            restaurant.description.toLowerCase().contains(_searchQuery.toLowerCase()) ||
-            restaurant.cuisineDisplayName.toLowerCase().contains(_searchQuery.toLowerCase()) ||
-            restaurant.tags.any((tag) => tag.toLowerCase().contains(_searchQuery.toLowerCase()));
+        return restaurant.title.toLowerCase().contains(
+              _searchQuery.toLowerCase(),
+            ) ||
+            restaurant.description.toLowerCase().contains(
+              _searchQuery.toLowerCase(),
+            ) ||
+            restaurant.cuisineDisplayName.toLowerCase().contains(
+              _searchQuery.toLowerCase(),
+            ) ||
+            restaurant.tags.any(
+              (tag) => tag.toLowerCase().contains(_searchQuery.toLowerCase()),
+            );
       }).toList();
     }
 
     // Apply cuisine filter
     if (_selectedCuisine != null) {
-      restaurants = restaurants.where((restaurant) => restaurant.cuisineType == _selectedCuisine).toList();
+      restaurants = restaurants
+          .where((restaurant) => restaurant.cuisineType == _selectedCuisine)
+          .toList();
     }
 
     // Apply price range filter
     if (_selectedPriceRange != null) {
-      restaurants = restaurants.where((restaurant) => restaurant.priceRange == _selectedPriceRange).toList();
+      restaurants = restaurants
+          .where((restaurant) => restaurant.priceRange == _selectedPriceRange)
+          .toList();
     }
 
     return restaurants;
@@ -79,10 +91,7 @@ class _FoodDrinkScreenState extends State<FoodDrinkScreen> {
                 const SizedBox(height: 8),
                 Text(
                   'Discover the best dining experiences in Ramsey',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey[600],
-                  ),
+                  style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                 ),
                 const SizedBox(height: 16),
 
@@ -131,7 +140,8 @@ class _FoodDrinkScreenState extends State<FoodDrinkScreen> {
                   margin: const EdgeInsets.only(right: 8.0),
                   child: FilterChip(
                     label: const Text('All'),
-                    selected: _selectedCuisine == null && _selectedPriceRange == null,
+                    selected:
+                        _selectedCuisine == null && _selectedPriceRange == null,
                     onSelected: (selected) {
                       setState(() {
                         _selectedCuisine = null;
@@ -141,10 +151,14 @@ class _FoodDrinkScreenState extends State<FoodDrinkScreen> {
                     backgroundColor: Colors.grey[200],
                     selectedColor: Theme.of(context).primaryColor,
                     labelStyle: TextStyle(
-                      color: (_selectedCuisine == null && _selectedPriceRange == null)
+                      color:
+                          (_selectedCuisine == null &&
+                              _selectedPriceRange == null)
                           ? Colors.white
                           : Theme.of(context).primaryColor,
-                      fontWeight: (_selectedCuisine == null && _selectedPriceRange == null)
+                      fontWeight:
+                          (_selectedCuisine == null &&
+                              _selectedPriceRange == null)
                           ? FontWeight.w600
                           : FontWeight.w400,
                     ),
@@ -167,8 +181,12 @@ class _FoodDrinkScreenState extends State<FoodDrinkScreen> {
                       backgroundColor: Colors.grey[200],
                       selectedColor: _getPriceRangeColor(priceRange),
                       labelStyle: TextStyle(
-                        color: isSelected ? Colors.white : _getPriceRangeColor(priceRange),
-                        fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+                        color: isSelected
+                            ? Colors.white
+                            : _getPriceRangeColor(priceRange),
+                        fontWeight: isSelected
+                            ? FontWeight.w600
+                            : FontWeight.w400,
                       ),
                     ),
                   );
@@ -190,8 +208,12 @@ class _FoodDrinkScreenState extends State<FoodDrinkScreen> {
                       backgroundColor: Colors.grey[200],
                       selectedColor: _getCuisineColor(cuisine),
                       labelStyle: TextStyle(
-                        color: isSelected ? Colors.white : _getCuisineColor(cuisine),
-                        fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+                        color: isSelected
+                            ? Colors.white
+                            : _getCuisineColor(cuisine),
+                        fontWeight: isSelected
+                            ? FontWeight.w600
+                            : FontWeight.w400,
                       ),
                     ),
                   );
@@ -265,7 +287,9 @@ class _FoodDrinkScreenState extends State<FoodDrinkScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => RestaurantDetailScreen(restaurant: restaurant),
+                                builder: (context) => RestaurantDetailScreen(
+                                  restaurant: restaurant,
+                                ),
                               ),
                             );
                           },
