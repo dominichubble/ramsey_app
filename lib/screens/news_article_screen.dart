@@ -6,10 +6,7 @@ import '../widgets/custom_app_bar.dart';
 class NewsArticleScreen extends StatelessWidget {
   final News article;
 
-  const NewsArticleScreen({
-    super.key,
-    required this.article,
-  });
+  const NewsArticleScreen({super.key, required this.article});
 
   @override
   Widget build(BuildContext context) {
@@ -99,10 +96,7 @@ class NewsArticleScreen extends StatelessWidget {
                       const SizedBox(width: 4),
                       Text(
                         '${article.readTimeMinutes} min read',
-                        style: TextStyle(
-                          color: Colors.grey[600],
-                          fontSize: 14,
-                        ),
+                        style: TextStyle(color: Colors.grey[600], fontSize: 14),
                       ),
                     ],
                   ),
@@ -175,10 +169,7 @@ class NewsArticleScreen extends StatelessWidget {
                   const SizedBox(height: 24),
 
                   // Divider
-                  Container(
-                    height: 1,
-                    color: Colors.grey[300],
-                  ),
+                  Container(height: 1, color: Colors.grey[300]),
 
                   const SizedBox(height: 24),
 
@@ -319,8 +310,10 @@ class NewsArticleScreen extends StatelessWidget {
 
   void _shareArticle(BuildContext context) {
     // Copy article URL to clipboard
-    Clipboard.setData(ClipboardData(text: 'Check out this article: ${article.title}'));
-    
+    Clipboard.setData(
+      ClipboardData(text: 'Check out this article: ${article.title}'),
+    );
+
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Article link copied to clipboard'),
@@ -338,4 +331,4 @@ class NewsArticleScreen extends StatelessWidget {
       ),
     );
   }
-} 
+}

@@ -37,11 +37,7 @@ class HomeHighlights extends StatelessWidget {
           ),
         ),
         // Generate highlights from featured news
-        ...featuredNews
-            .take(3)
-            .map(
-              (news) => HomeHighlight.fromNews(news),
-            ),
+        ...featuredNews.take(3).map((news) => HomeHighlight.fromNews(news)),
       ],
     );
   }
