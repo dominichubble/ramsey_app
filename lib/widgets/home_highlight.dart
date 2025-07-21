@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import '../models/news.dart';
+import '../screens/news_article_screen.dart';
 
 class HomeHighlight extends StatelessWidget {
   final String? author;
   final String? title;
   final String? timePosted;
   final String? imageUrl;
+  final News? newsModel; // Add the full news model for navigation
+  final VoidCallback? onTap;
 
   const HomeHighlight({
     super.key,
@@ -12,19 +16,47 @@ class HomeHighlight extends StatelessWidget {
     this.title,
     this.timePosted,
     this.imageUrl,
+    this.newsModel,
+    this.onTap,
   });
+
+  // Constructor from News model
+  factory HomeHighlight.fromNews(News news) {
+    return HomeHighlight(
+      author: news.author,
+      title: news.title,
+      timePosted: news.formattedDate,
+      imageUrl: news.imageUrl,
+      newsModel: news, // Pass the full model for navigation
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.symmetric(horizontal: 8.0),
-      padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(8.0),
       ),
-      child: Row(
+      child: InkWell(
+        onTap: () {
+          if (onTap != null) {
+            onTap!();
+          } else if (newsModel != null) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => NewsArticleScreen(article: newsModel!),
+              ),
+            );
+          }
+        },
+        borderRadius: BorderRadius.circular(8.0),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
         children: [
           // Left side - Text content
           Expanded(
@@ -97,6 +129,8 @@ class HomeHighlight extends StatelessWidget {
             ),
           ),
         ],
+      ),
+        ),
       ),
     );
   }

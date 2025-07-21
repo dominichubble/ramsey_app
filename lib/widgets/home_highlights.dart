@@ -40,14 +40,8 @@ class HomeHighlights extends StatelessWidget {
         ...featuredNews
             .take(3)
             .map(
-              (news) => HomeHighlight(
-                author: news.author,
-                title: news.title,
-                timePosted: news.formattedDate,
-                imageUrl: news.imageUrl,
-              ),
-            )
-            ,
+              (news) => HomeHighlight.fromNews(news),
+            ),
       ],
     );
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ramsey_app/widgets/news_cards.dart';
+import 'package:ramsey_app/widgets/news_card.dart';
 
 import '../services/news_service.dart';
 
@@ -9,7 +9,7 @@ class HomeNews extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final newsService = NewsService();
-    final latestNews = newsService.getLatestNewsAsStringMap(limit: 6);
+    final latestNews = newsService.getLatestNews(limit: 6);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,8 +32,17 @@ class HomeNews extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 332, // Fixed height for the PageView + indicators (300 + 32)
-          child: NewsCards(newsItems: latestNews),
+          height: 340, // Fixed height for the PageView + indicators
+          child: PageView.builder(
+            itemCount: latestNews.length,
+            itemBuilder: (context, index) {
+              final news = latestNews[index];
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: NewsCard.fromNews(news),
+              );
+            },
+          ),
         ),
       ],
     );
