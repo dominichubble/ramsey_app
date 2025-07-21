@@ -18,7 +18,7 @@ class NewsService {
       imageUrl:
           'https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?w=400&h=200&fit=crop',
       author: 'Emma Corlett',
-      category: NewsCategory.realEstate,
+      category: NewsCategory.development,
       tags: ['harbour', 'development', 'tourism'],
       isFeatured: true,
       readTimeMinutes: 5,
@@ -34,7 +34,7 @@ class NewsService {
       imageUrl:
           'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=200&fit=crop',
       author: 'James Quirk',
-      category: NewsCategory.budgeting, // Education/Community
+      category: NewsCategory.education,
       tags: ['education', 'school', 'achievement'],
       isFeatured: true,
       readTimeMinutes: 4,
@@ -50,7 +50,7 @@ class NewsService {
       imageUrl:
           'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=400&h=200&fit=crop',
       author: 'Sarah Craine',
-      category: NewsCategory.investing, // Transport/Environment
+      category: NewsCategory.transport,
       tags: ['transport', 'electric', 'environment'],
       isFeatured: false,
       readTimeMinutes: 3,
@@ -66,7 +66,7 @@ class NewsService {
       imageUrl:
           'https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=400&h=200&fit=crop',
       author: 'Peter Kneale',
-      category: NewsCategory.budgeting, // Local Community
+      category: NewsCategory.community,
       tags: ['farmers market', 'local produce', 'community'],
       isFeatured: false,
       readTimeMinutes: 4,
@@ -82,7 +82,7 @@ class NewsService {
       imageUrl:
           'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=200&fit=crop',
       author: 'Helen Gelling',
-      category: NewsCategory.realEstate, // Environment/Parks
+      category: NewsCategory.environment,
       tags: ['mooragh park', 'conservation', 'wildlife'],
       isFeatured: true,
       readTimeMinutes: 6,
@@ -98,7 +98,7 @@ class NewsService {
       imageUrl:
           'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=400&h=200&fit=crop',
       author: 'Michael Kelly',
-      category: NewsCategory.debt, // Sports/Community
+      category: NewsCategory.sports,
       tags: ['football', 'sport', 'promotion'],
       isFeatured: false,
       readTimeMinutes: 5,
@@ -114,7 +114,7 @@ class NewsService {
       imageUrl:
           'https://images.unsplash.com/photo-1467103956184-29135c4bf58e?w=400&h=200&fit=crop',
       author: 'Anne Christian',
-      category: NewsCategory.realEstate,
+      category: NewsCategory.heritage,
       tags: ['heritage', 'restoration', 'community'],
       isFeatured: false,
       readTimeMinutes: 7,
@@ -130,10 +130,42 @@ class NewsService {
       imageUrl:
           'https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=200&fit=crop',
       author: 'Dr. Rachel Corrin',
-      category: NewsCategory.investing, // Environment
+      category: NewsCategory.environment,
       tags: ['marine conservation', 'wildlife', 'environment'],
       isFeatured: false,
       readTimeMinutes: 8,
+    ),
+    News(
+      id: '9',
+      title: 'Annual Ramsey Walking Festival Attracts Record Numbers',
+      description:
+          'Heritage walks and nature trails showcase the best of Ramsey\'s landscape and history.',
+      content:
+          'The Ramsey Walking Festival has attracted a record number of participants this year, with over 500 people taking part in guided walks exploring the town\'s natural beauty and rich heritage. The festival featured 15 different routes...',
+      publishedDate: DateTime.now().subtract(const Duration(days: 8)),
+      imageUrl:
+          'https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&h=200&fit=crop',
+      author: 'Mark Corkish',
+      category: NewsCategory.events,
+      tags: ['walking festival', 'tourism', 'heritage'],
+      isFeatured: false,
+      readTimeMinutes: 6,
+    ),
+    News(
+      id: '10',
+      title: 'Town Commissioners Approve New Business Support Scheme',
+      description:
+          'Local entrepreneurs can now access grants and mentoring through new initiative.',
+      content:
+          'Ramsey Town Commissioners have approved a comprehensive business support scheme aimed at encouraging local entrepreneurship. The initiative includes startup grants, business mentoring, and reduced rate premises for new businesses...',
+      publishedDate: DateTime.now().subtract(const Duration(days: 9)),
+      imageUrl:
+          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop',
+      author: 'David Ashford',
+      category: NewsCategory.townCouncil,
+      tags: ['business support', 'entrepreneurs', 'town council'],
+      isFeatured: false,
+      readTimeMinutes: 5,
     ),
   ];
 

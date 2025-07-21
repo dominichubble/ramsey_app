@@ -138,14 +138,15 @@ class News {
 }
 
 enum NewsCategory {
-  finance,
-  investing,
-  budgeting,
-  debt,
-  retirement,
-  insurance,
-  taxes,
-  realEstate,
+  townCouncil,
+  community,
+  events,
+  development,
+  transport,
+  environment,
+  heritage,
+  sports,
+  education,
   business,
   general,
 }
@@ -154,22 +155,24 @@ enum NewsCategory {
 extension NewsCategoryExtension on NewsCategory {
   String get displayName {
     switch (this) {
-      case NewsCategory.finance:
-        return 'Finance';
-      case NewsCategory.investing:
-        return 'Investing';
-      case NewsCategory.budgeting:
-        return 'Budgeting';
-      case NewsCategory.debt:
-        return 'Debt Management';
-      case NewsCategory.retirement:
-        return 'Retirement';
-      case NewsCategory.insurance:
-        return 'Insurance';
-      case NewsCategory.taxes:
-        return 'Taxes';
-      case NewsCategory.realEstate:
-        return 'Real Estate';
+      case NewsCategory.townCouncil:
+        return 'Town Council';
+      case NewsCategory.community:
+        return 'Community';
+      case NewsCategory.events:
+        return 'Events';
+      case NewsCategory.development:
+        return 'Development';
+      case NewsCategory.transport:
+        return 'Transport';
+      case NewsCategory.environment:
+        return 'Environment';
+      case NewsCategory.heritage:
+        return 'Heritage';
+      case NewsCategory.sports:
+        return 'Sports';
+      case NewsCategory.education:
+        return 'Education';
       case NewsCategory.business:
         return 'Business';
       case NewsCategory.general:
@@ -179,24 +182,26 @@ extension NewsCategoryExtension on NewsCategory {
 
   Color get color {
     switch (this) {
-      case NewsCategory.finance:
+      case NewsCategory.townCouncil:
         return Colors.blue;
-      case NewsCategory.investing:
-        return Colors.green;
-      case NewsCategory.budgeting:
+      case NewsCategory.community:
         return Colors.orange;
-      case NewsCategory.debt:
-        return Colors.red;
-      case NewsCategory.retirement:
+      case NewsCategory.events:
         return Colors.purple;
-      case NewsCategory.insurance:
-        return Colors.teal;
-      case NewsCategory.taxes:
-        return Colors.brown;
-      case NewsCategory.realEstate:
+      case NewsCategory.development:
         return Colors.indigo;
-      case NewsCategory.business:
+      case NewsCategory.transport:
+        return Colors.green;
+      case NewsCategory.environment:
+        return Colors.teal;
+      case NewsCategory.heritage:
+        return Colors.brown;
+      case NewsCategory.sports:
+        return Colors.red;
+      case NewsCategory.education:
         return Colors.cyan;
+      case NewsCategory.business:
+        return Colors.amber;
       case NewsCategory.general:
         return Colors.grey;
     }

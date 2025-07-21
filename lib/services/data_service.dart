@@ -120,20 +120,28 @@ class DataService {
   /// Helper method to parse news category
   NewsCategory _parseNewsCategory(String? categoryString) {
     switch (categoryString) {
-      case 'realEstate':
-        return NewsCategory.realEstate;
-      case 'budgeting':
-        return NewsCategory.budgeting;
-      case 'investing':
-        return NewsCategory.investing;
-      case 'debt':
-        return NewsCategory.debt;
+      case 'townCouncil':
+        return NewsCategory.townCouncil;
+      case 'community':
+        return NewsCategory.community;
+      case 'events':
+        return NewsCategory.events;
+      case 'development':
+        return NewsCategory.development;
+      case 'transport':
+        return NewsCategory.transport;
+      case 'environment':
+        return NewsCategory.environment;
+      case 'heritage':
+        return NewsCategory.heritage;
+      case 'sports':
+        return NewsCategory.sports;
+      case 'education':
+        return NewsCategory.education;
       case 'business':
         return NewsCategory.business;
-      case 'insurance':
-        return NewsCategory.insurance;
       default:
-        return NewsCategory.budgeting;
+        return NewsCategory.general;
     }
   }
 
