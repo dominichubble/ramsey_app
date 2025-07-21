@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../models/news.dart';
-import '../screens/news_article_screen.dart';
+import '../../models/news.dart';
+import '../../screens/news/news_article_screen.dart';
 
-class HomeHighlight extends StatelessWidget {
+class HighlightCard extends StatelessWidget {
   final String? author;
   final String? title;
   final String? timePosted;
@@ -10,7 +10,7 @@ class HomeHighlight extends StatelessWidget {
   final News? newsModel; // Add the full news model for navigation
   final VoidCallback? onTap;
 
-  const HomeHighlight({
+  const HighlightCard({
     super.key,
     this.author,
     this.title,
@@ -21,8 +21,8 @@ class HomeHighlight extends StatelessWidget {
   });
 
   // Constructor from News model
-  factory HomeHighlight.fromNews(News news) {
-    return HomeHighlight(
+  factory HighlightCard.fromNews(News news) {
+    return HighlightCard(
       author: news.author,
       title: news.title,
       timePosted: news.formattedDate,

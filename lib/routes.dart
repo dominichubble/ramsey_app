@@ -1,9 +1,9 @@
-import 'package:ramsey_app/screens/commissioners_screen.dart';
-import 'package:ramsey_app/screens/events_screen.dart';
-import 'package:ramsey_app/screens/food_drink_screen.dart';
-import 'package:ramsey_app/screens/home_screen.dart';
-import 'package:ramsey_app/screens/news_screen.dart';
-import 'package:ramsey_app/widgets/main_navigation.dart';
+import 'package:ramsey_app/screens/commissioners/commissioners_screen.dart';
+import 'package:ramsey_app/screens/events/events_screen.dart';
+import 'package:ramsey_app/screens/restaurants/restaurants_screen.dart';
+import 'package:ramsey_app/screens/home/home_screen.dart';
+import 'package:ramsey_app/screens/news/news_screen.dart';
+import 'package:ramsey_app/widgets/common/main_navigation.dart';
 
 class AppRoutes {
   static const String main = '/';
@@ -19,7 +19,7 @@ class AppRoutes {
     home: (context) => const HomeScreen(),
     news: (context) => const NewsScreen(),
     events: (context) => const EventsScreen(),
-    foodDrink: (context) => const FoodDrinkScreen(),
+    foodDrink: (context) => const RestaurantsScreen(),
     commissioners: (context) => const CommissionersScreen(),
   };
 }

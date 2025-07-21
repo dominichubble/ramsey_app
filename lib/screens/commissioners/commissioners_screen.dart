@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../widgets/custom_app_bar.dart';
-import '../widgets/page_header.dart';
-import '../widgets/commissioner_card.dart';
-import '../widgets/info_card.dart';
-import '../services/commissioner_service.dart';
+import '../../widgets/common/custom_app_bar.dart';
+import '../../widgets/common/page_header.dart';
+import '../../widgets/cards/commissioner_card.dart';
+import '../../widgets/forms/info_card.dart';
+import '../../services/commissioner_service.dart';
 
 class CommissionersScreen extends StatelessWidget {
   const CommissionersScreen({super.key});

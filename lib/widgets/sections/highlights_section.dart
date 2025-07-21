@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:ramsey_app/widgets/home_highlight.dart';
+import '../cards/highlight_card.dart';
+import '../../services/news_service.dart';
+import '../common/custom_button.dart';
 
-import '../services/news_service.dart';
-import 'custom_button.dart';
-
-class HomeHighlights extends StatelessWidget {
-  const HomeHighlights({super.key});
+class HighlightsSection extends StatelessWidget {
+  const HighlightsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +36,7 @@ class HomeHighlights extends StatelessWidget {
           ),
         ),
         // Generate highlights from featured news
-        ...featuredNews.take(3).map((news) => HomeHighlight.fromNews(news)),
+        ...featuredNews.take(3).map((news) => HighlightCard.fromNews(news)),
       ],
     );
   }

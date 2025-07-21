@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../models/news.dart';
-import '../screens/news_article_screen.dart';
+import '../../models/news.dart';
+import '../../screens/news/news_article_screen.dart';
 
 // Enhanced news card that works with both Map and News model
 class NewsCard extends StatelessWidget {

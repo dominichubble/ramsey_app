@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../services/event_service.dart';
-import '../widgets/custom_button.dart';
-import '../widgets/home_events_calendar.dart';
-import '../widgets/home_main_event.dart';
+import '../../services/event_service.dart';
+import '../common/custom_button.dart';
+import '../common/events_calendar.dart';
+import '../cards/featured_event_card.dart';
 
-class HomeEvents extends StatelessWidget {
+class EventsSection extends StatelessWidget {
   final Function(int)? onNavigateToTab;
 
-  const HomeEvents({super.key, this.onNavigateToTab});
+  const EventsSection({super.key, this.onNavigateToTab});
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +50,7 @@ class HomeEvents extends StatelessWidget {
 
           // Main featured event
           if (mainEvent != null)
-            MainEvent(
+            FeaturedEventCard(
               title: mainEvent.title,
               date: mainEvent.formattedDate,
               imageUrl:

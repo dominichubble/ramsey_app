@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../services/event_service.dart';
-import 'event_card.dart';
+import '../../services/event_service.dart';
+import '../cards/event_card.dart';
 
 enum EventFilter { thisWeek, nextWeek, thisMonth, nextMonth }
 

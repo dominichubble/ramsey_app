@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import '../widgets/custom_app_bar.dart';
-import '../widgets/page_header.dart';
-import '../services/restaurant_service.dart';
-import '../models/restaurant.dart';
-import '../widgets/restaurant_card.dart';
+import '../../widgets/common/custom_app_bar.dart';
+import '../../widgets/common/page_header.dart';
+import '../../services/restaurant_service.dart';
+import '../../models/restaurant.dart';
+import '../../widgets/cards/restaurant_card.dart';
 import 'restaurant_detail_screen.dart';
 
-class FoodDrinkScreen extends StatefulWidget {
-  const FoodDrinkScreen({super.key});
+class RestaurantsScreen extends StatefulWidget {
+  const RestaurantsScreen({super.key});
 
   @override
-  State<FoodDrinkScreen> createState() => _FoodDrinkScreenState();
+  State<RestaurantsScreen> createState() => _RestaurantsScreenState();
 }
 
-class _FoodDrinkScreenState extends State<FoodDrinkScreen> {
+class _RestaurantsScreenState extends State<RestaurantsScreen> {
   final RestaurantService _restaurantService = RestaurantService();
   CuisineType? _selectedCuisine;
   PriceRange? _selectedPriceRange;

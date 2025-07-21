@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class MainEvent extends StatelessWidget {
+class FeaturedEventCard extends StatelessWidget {
   final String title;
   final String imageUrl;
   final String date;
 
-  const MainEvent({
+  const FeaturedEventCard({
     super.key,
     required this.title,
     required this.imageUrl,

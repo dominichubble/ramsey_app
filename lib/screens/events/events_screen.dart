@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ramsey_app/widgets/custom_app_bar.dart';
-import '../widgets/page_header.dart';
-import '../widgets/find_events.dart';
+import '../../widgets/common/custom_app_bar.dart';
+import '../../widgets/common/page_header.dart';
+import '../../widgets/sections/find_events.dart';
 
 class EventsScreen extends StatelessWidget {
   const EventsScreen({super.key});

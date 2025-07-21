@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:ramsey_app/widgets/news_card.dart';
+import '../cards/news_card.dart';
+import '../../services/news_service.dart';
 
-import '../services/news_service.dart';
-
-class HomeNews extends StatelessWidget {
-  const HomeNews({super.key});
+class NewsSection extends StatelessWidget {
+  const NewsSection({super.key});
 
   @override
   Widget build(BuildContext context) {

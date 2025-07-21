@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../screens/commissioners_screen.dart';
-import '../screens/events_screen.dart';
-import '../screens/food_drink_screen.dart';
-import '../screens/home_screen.dart';
-import '../screens/news_screen.dart';
+import '../../screens/commissioners/commissioners_screen.dart';
+import '../../screens/events/events_screen.dart';
+import '../../screens/restaurants/restaurants_screen.dart';
+import '../../screens/home/home_screen.dart';
+import '../../screens/news/news_screen.dart';
 
 class MainNavigation extends StatefulWidget {
   const MainNavigation({super.key});
@@ -27,7 +27,7 @@ class _MainNavigationState extends State<MainNavigation> {
       ),
       const NewsScreen(),
       const EventsScreen(),
-      const FoodDrinkScreen(),
+      const RestaurantsScreen(),
       const CommissionersScreen(),
     ];
   }

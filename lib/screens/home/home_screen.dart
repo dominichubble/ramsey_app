@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/custom_app_bar.dart';
-import '../widgets/home_events.dart';
-import '../widgets/home_food_and_drink.dart';
-import '../widgets/home_highlights.dart';
-import '../widgets/home_news.dart';
+import '../../widgets/common/custom_app_bar.dart';
+import '../../widgets/sections/events_section.dart';
+import '../../widgets/sections/restaurants_section.dart';
+import '../../widgets/sections/highlights_section.dart';
+import '../../widgets/sections/news_section.dart';
 
 class HomeScreen extends StatelessWidget {
   final Function(int)? onNavigateToTab;
@@ -35,10 +35,10 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const HomeNews(),
-            const HomeHighlights(),
-            HomeEvents(onNavigateToTab: onNavigateToTab),
-            HomeFoodAndDrink(onNavigateToTab: onNavigateToTab),
+            const NewsSection(),
+            const HighlightsSection(),
+            EventsSection(onNavigateToTab: onNavigateToTab),
+            RestaurantsSection(onNavigateToTab: onNavigateToTab),
           ],
         ),
       ),

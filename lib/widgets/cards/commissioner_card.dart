@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../models/commissioner.dart';
+import '../../models/commissioner.dart';
 
 class CommissionerCard extends StatelessWidget {
   final Commissioner commissioner;

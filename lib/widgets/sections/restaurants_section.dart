@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-import '../services/restaurant_service.dart';
-import '../widgets/custom_button.dart';
-import '../widgets/restaurant_card.dart';
-import '../screens/food_drink_screen.dart';
-import '../screens/restaurant_detail_screen.dart';
+import '../../services/restaurant_service.dart';
+import '../common/custom_button.dart';
+import '../cards/restaurant_card.dart';
+import '../../screens/restaurants/restaurants_screen.dart';
+import '../../screens/restaurants/restaurant_detail_screen.dart';
 
-class HomeFoodAndDrink extends StatelessWidget {
+class RestaurantsSection extends StatelessWidget {
   final Function(int)? onNavigateToTab;
 
-  const HomeFoodAndDrink({super.key, this.onNavigateToTab});
+  const RestaurantsSection({super.key, this.onNavigateToTab});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class HomeFoodAndDrink extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const FoodDrinkScreen(),
+                        builder: (context) => const RestaurantsScreen(),
                       ),
                     );
                   }

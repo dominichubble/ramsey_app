@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ramsey_app/widgets/news_card.dart';
+import '../cards/news_card.dart';
 
 // PageView carousel implementation for news cards with dot indicators
 class NewsCards extends StatefulWidget {

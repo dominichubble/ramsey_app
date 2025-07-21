@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../models/event.dart';
-import '../services/event_service.dart';
-import 'event_card.dart';
+import '../../models/event.dart';
+import '../../services/event_service.dart';
+import '../cards/event_card.dart';
 
 class FindEvents extends StatefulWidget {
   const FindEvents({super.key});

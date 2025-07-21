@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../models/event.dart';
-import '../screens/event_details.dart';
+import '../../models/event.dart';
+import '../../screens/events/event_detail_screen.dart';
 
 // Reusable event card widget with image-focused layout
 class EventCard extends StatelessWidget {

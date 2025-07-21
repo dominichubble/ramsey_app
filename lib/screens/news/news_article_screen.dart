@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../models/news.dart';
-import '../widgets/custom_app_bar.dart';
+import '../../models/news.dart';
+import '../../widgets/common/custom_app_bar.dart';
 
 class NewsArticleScreen extends StatelessWidget {
   final News article;
